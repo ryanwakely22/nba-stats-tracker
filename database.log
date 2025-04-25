@@ -1,0 +1,735 @@
+2025-04-25 16:59:07,762 - INFO - Database initialized successfully
+2025-04-25 16:59:07,765 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 16:59:07,766 - INFO - Starting top scorers update...
+2025-04-25 16:59:07,766 - INFO - Fetching games from the last 12 hours...
+2025-04-25 16:59:07,766 - INFO - Fetching games since 04/25/2025
+2025-04-25 16:59:08,366 - INFO - Found 0 completed games
+2025-04-25 16:59:08,366 - INFO - No completed games found in the last 12 hours.
+2025-04-25 16:59:08,368 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 16:59:08,368 - INFO - Scheduler started
+2025-04-25 17:00:56,136 - INFO - Database initialized successfully
+2025-04-25 17:00:56,138 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 17:00:56,139 - INFO - Starting top scorers update...
+2025-04-25 17:00:56,139 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:00:56,139 - INFO - Fetching games since 04/25/2025
+2025-04-25 17:00:56,703 - INFO - Found 0 completed games
+2025-04-25 17:00:56,703 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:00:56,706 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 17:00:56,706 - INFO - Scheduler started
+2025-04-25 17:00:56,769 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.0.0.39:8080
+2025-04-25 17:00:56,769 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 17:00:56,770 - INFO -  * Restarting with stat
+2025-04-25 17:00:57,449 - INFO - Database initialized successfully
+2025-04-25 17:00:57,450 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 17:00:57,451 - INFO - Starting top scorers update...
+2025-04-25 17:00:57,451 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:00:57,451 - INFO - Fetching games since 04/25/2025
+2025-04-25 17:00:57,849 - INFO - Found 0 completed games
+2025-04-25 17:00:57,849 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:00:57,853 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 17:00:57,853 - INFO - Scheduler started
+2025-04-25 17:00:57,896 - WARNING -  * Debugger is active!
+2025-04-25 17:00:58,008 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 17:03:15,405 - INFO - 127.0.0.1 - - [25/Apr/2025 17:03:15] "GET / HTTP/1.1" 200 -
+2025-04-25 17:03:15,470 - INFO - 127.0.0.1 - - [25/Apr/2025 17:03:15] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-04-25 17:03:15,470 - INFO - 127.0.0.1 - - [25/Apr/2025 17:03:15] "GET /static/js/script.js HTTP/1.1" 200 -
+2025-04-25 17:03:15,571 - INFO - Retrieved 0 records from database
+2025-04-25 17:03:15,572 - INFO - 127.0.0.1 - - [25/Apr/2025 17:03:15] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:03:17,144 - INFO - 127.0.0.1 - - [25/Apr/2025 17:03:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-25 17:03:24,672 - INFO - Starting top scorers update...
+2025-04-25 17:03:24,673 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:03:24,673 - INFO - Fetching games since 04/25/2025
+2025-04-25 17:03:24,822 - INFO - Found 0 completed games
+2025-04-25 17:03:24,822 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:03:24,823 - INFO - 127.0.0.1 - - [25/Apr/2025 17:03:24] "GET /refresh HTTP/1.1" 200 -
+2025-04-25 17:03:27,187 - INFO - Starting top scorers update...
+2025-04-25 17:03:27,188 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:03:27,188 - INFO - Fetching games since 04/25/2025
+2025-04-25 17:03:27,339 - INFO - Found 0 completed games
+2025-04-25 17:03:27,340 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:03:27,340 - INFO - 127.0.0.1 - - [25/Apr/2025 17:03:27] "GET /refresh HTTP/1.1" 200 -
+2025-04-25 17:04:16,488 - INFO -  * Detected change in '/Users/ryanwakely/Desktop/nba-custom-scores/nba_data.py', reloading
+2025-04-25 17:04:16,595 - INFO -  * Restarting with stat
+2025-04-25 17:04:17,638 - INFO - Database initialized successfully
+2025-04-25 17:04:17,639 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 17:04:17,640 - INFO - Starting top scorers update...
+2025-04-25 17:04:17,640 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:04:17,640 - INFO - Fetching games since 04/24/2025
+2025-04-25 17:04:18,168 - INFO - Found 3 completed games
+2025-04-25 17:04:18,169 - INFO - Found 3 completed games. Fetching player stats...
+2025-04-25 17:04:18,169 - INFO - Fetching stats for game ID: 0042400123
+2025-04-25 17:04:18,448 - INFO - Successfully fetched stats for 29 players
+2025-04-25 17:04:18,449 - INFO - Fetching stats for game ID: 0042400143
+2025-04-25 17:04:18,686 - INFO - Successfully fetched stats for 26 players
+2025-04-25 17:04:18,687 - INFO - Fetching stats for game ID: 0042400173
+2025-04-25 17:04:18,942 - INFO - Successfully fetched stats for 29 players
+2025-04-25 17:04:18,944 - INFO - Calculating custom scores...
+2025-04-25 17:04:18,945 - ERROR - Error calculating custom score: float() argument must be a string or a real number, not 'NoneType'
+2025-04-25 17:04:18,946 - ERROR - Error getting top scorers: 'CUSTOM_SCORE'
+2025-04-25 17:04:18,948 - WARNING - No players with valid stats found
+2025-04-25 17:04:18,952 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 17:04:18,952 - INFO - Scheduler started
+2025-04-25 17:04:19,000 - WARNING -  * Debugger is active!
+2025-04-25 17:04:19,023 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 17:04:21,377 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:21] "GET / HTTP/1.1" 200 -
+2025-04-25 17:04:21,409 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 17:04:21,413 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:21] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 17:04:21,420 - INFO - Retrieved 0 records from database
+2025-04-25 17:04:21,421 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:21] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:04:22,011 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:22] "GET / HTTP/1.1" 200 -
+2025-04-25 17:04:22,024 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 17:04:22,024 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:22] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 17:04:22,049 - INFO - Retrieved 0 records from database
+2025-04-25 17:04:22,049 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:22] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:04:23,037 - INFO - Starting top scorers update...
+2025-04-25 17:04:23,038 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:04:23,038 - INFO - Fetching games since 04/24/2025
+2025-04-25 17:04:23,198 - INFO - Found 3 completed games
+2025-04-25 17:04:23,199 - INFO - Found 3 completed games. Fetching player stats...
+2025-04-25 17:04:23,199 - INFO - Fetching stats for game ID: 0042400123
+2025-04-25 17:04:23,340 - INFO - Successfully fetched stats for 29 players
+2025-04-25 17:04:23,340 - INFO - Fetching stats for game ID: 0042400143
+2025-04-25 17:04:23,476 - INFO - Successfully fetched stats for 26 players
+2025-04-25 17:04:23,477 - INFO - Fetching stats for game ID: 0042400173
+2025-04-25 17:04:23,623 - INFO - Successfully fetched stats for 29 players
+2025-04-25 17:04:23,627 - INFO - Calculating custom scores...
+2025-04-25 17:04:23,628 - ERROR - Error calculating custom score: float() argument must be a string or a real number, not 'NoneType'
+2025-04-25 17:04:23,628 - ERROR - Error getting top scorers: 'CUSTOM_SCORE'
+2025-04-25 17:04:23,629 - WARNING - No players with valid stats found
+2025-04-25 17:04:23,630 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:23] "GET /refresh HTTP/1.1" 200 -
+2025-04-25 17:04:33,471 - INFO - Database initialized successfully
+2025-04-25 17:04:33,472 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 17:04:33,473 - INFO - Starting top scorers update...
+2025-04-25 17:04:33,473 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:04:33,473 - INFO - Fetching games since 04/24/2025
+2025-04-25 17:04:33,885 - INFO - Found 3 completed games
+2025-04-25 17:04:33,885 - INFO - Found 3 completed games. Fetching player stats...
+2025-04-25 17:04:33,885 - INFO - Fetching stats for game ID: 0042400123
+2025-04-25 17:04:34,030 - INFO - Successfully fetched stats for 29 players
+2025-04-25 17:04:34,030 - INFO - Fetching stats for game ID: 0042400143
+2025-04-25 17:04:34,188 - INFO - Successfully fetched stats for 26 players
+2025-04-25 17:04:34,188 - INFO - Fetching stats for game ID: 0042400173
+2025-04-25 17:04:34,338 - INFO - Successfully fetched stats for 29 players
+2025-04-25 17:04:34,339 - INFO - Calculating custom scores...
+2025-04-25 17:04:34,340 - ERROR - Error calculating custom score: float() argument must be a string or a real number, not 'NoneType'
+2025-04-25 17:04:34,340 - ERROR - Error getting top scorers: 'CUSTOM_SCORE'
+2025-04-25 17:04:34,341 - WARNING - No players with valid stats found
+2025-04-25 17:04:34,345 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 17:04:34,345 - INFO - Scheduler started
+2025-04-25 17:04:34,405 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.0.0.39:8080
+2025-04-25 17:04:34,405 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 17:04:34,405 - INFO -  * Restarting with stat
+2025-04-25 17:04:35,080 - INFO - Database initialized successfully
+2025-04-25 17:04:35,081 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 17:04:35,082 - INFO - Starting top scorers update...
+2025-04-25 17:04:35,082 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:04:35,082 - INFO - Fetching games since 04/24/2025
+2025-04-25 17:04:35,587 - INFO - Found 3 completed games
+2025-04-25 17:04:35,588 - INFO - Found 3 completed games. Fetching player stats...
+2025-04-25 17:04:35,588 - INFO - Fetching stats for game ID: 0042400123
+2025-04-25 17:04:35,848 - INFO - Successfully fetched stats for 29 players
+2025-04-25 17:04:35,848 - INFO - Fetching stats for game ID: 0042400143
+2025-04-25 17:04:36,080 - INFO - Successfully fetched stats for 26 players
+2025-04-25 17:04:36,081 - INFO - Fetching stats for game ID: 0042400173
+2025-04-25 17:04:36,342 - INFO - Successfully fetched stats for 29 players
+2025-04-25 17:04:36,343 - INFO - Calculating custom scores...
+2025-04-25 17:04:36,344 - ERROR - Error calculating custom score: float() argument must be a string or a real number, not 'NoneType'
+2025-04-25 17:04:36,344 - ERROR - Error getting top scorers: 'CUSTOM_SCORE'
+2025-04-25 17:04:36,346 - WARNING - No players with valid stats found
+2025-04-25 17:04:36,352 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 17:04:36,352 - INFO - Scheduler started
+2025-04-25 17:04:36,402 - WARNING -  * Debugger is active!
+2025-04-25 17:04:36,429 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 17:04:40,712 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:40] "GET / HTTP/1.1" 200 -
+2025-04-25 17:04:40,776 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 17:04:40,778 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:40] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 17:04:40,805 - INFO - Retrieved 0 records from database
+2025-04-25 17:04:40,806 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:40] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:04:42,389 - INFO - Starting top scorers update...
+2025-04-25 17:04:42,390 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:04:42,390 - INFO - Fetching games since 04/24/2025
+2025-04-25 17:04:42,538 - INFO - Found 3 completed games
+2025-04-25 17:04:42,539 - INFO - Found 3 completed games. Fetching player stats...
+2025-04-25 17:04:42,539 - INFO - Fetching stats for game ID: 0042400123
+2025-04-25 17:04:42,700 - INFO - Successfully fetched stats for 29 players
+2025-04-25 17:04:42,700 - INFO - Fetching stats for game ID: 0042400143
+2025-04-25 17:04:42,854 - INFO - Successfully fetched stats for 26 players
+2025-04-25 17:04:42,854 - INFO - Fetching stats for game ID: 0042400173
+2025-04-25 17:04:43,001 - INFO - Successfully fetched stats for 29 players
+2025-04-25 17:04:43,003 - INFO - Calculating custom scores...
+2025-04-25 17:04:43,003 - ERROR - Error calculating custom score: float() argument must be a string or a real number, not 'NoneType'
+2025-04-25 17:04:43,003 - ERROR - Error getting top scorers: 'CUSTOM_SCORE'
+2025-04-25 17:04:43,004 - WARNING - No players with valid stats found
+2025-04-25 17:04:43,004 - INFO - 127.0.0.1 - - [25/Apr/2025 17:04:43] "GET /refresh HTTP/1.1" 200 -
+2025-04-25 17:09:14,970 - INFO -  * Detected change in '/Users/ryanwakely/Desktop/nba-custom-scores/nba_data.py', reloading
+2025-04-25 17:09:15,073 - INFO -  * Restarting with stat
+2025-04-25 17:09:49,126 - INFO - Database initialized successfully
+2025-04-25 17:09:49,128 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 17:09:49,128 - INFO - Starting top scorers update...
+2025-04-25 17:09:49,128 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:09:49,456 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 17:09:49,456 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:09:49,460 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 17:09:49,461 - INFO - Scheduler started
+2025-04-25 17:09:49,526 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.0.0.39:8080
+2025-04-25 17:09:49,526 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 17:09:49,527 - INFO -  * Restarting with stat
+2025-04-25 17:09:50,222 - INFO - Database initialized successfully
+2025-04-25 17:09:50,224 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 17:09:50,224 - INFO - Starting top scorers update...
+2025-04-25 17:09:50,224 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:09:50,388 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 17:09:50,389 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:09:50,391 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 17:09:50,391 - INFO - Scheduler started
+2025-04-25 17:09:50,435 - WARNING -  * Debugger is active!
+2025-04-25 17:09:50,952 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 17:09:52,574 - INFO - 127.0.0.1 - - [25/Apr/2025 17:09:52] "GET / HTTP/1.1" 200 -
+2025-04-25 17:09:52,598 - INFO - 127.0.0.1 - - [25/Apr/2025 17:09:52] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 17:09:52,599 - INFO - 127.0.0.1 - - [25/Apr/2025 17:09:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 17:09:52,611 - INFO - Retrieved 0 records from database
+2025-04-25 17:09:52,612 - INFO - 127.0.0.1 - - [25/Apr/2025 17:09:52] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:09:54,433 - INFO - Starting top scorers update...
+2025-04-25 17:09:54,433 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:09:54,550 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 17:09:54,550 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:09:54,551 - INFO - 127.0.0.1 - - [25/Apr/2025 17:09:54] "GET /refresh HTTP/1.1" 200 -
+2025-04-25 17:17:01,914 - INFO - Database initialized successfully
+2025-04-25 17:17:01,916 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 17:17:01,917 - INFO - Starting top scorers update...
+2025-04-25 17:17:01,917 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:17:02,155 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 17:17:02,155 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:17:02,159 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 17:17:02,159 - INFO - Scheduler started
+2025-04-25 17:17:02,230 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.0.0.39:8080
+2025-04-25 17:17:02,230 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 17:17:02,231 - INFO -  * Restarting with stat
+2025-04-25 17:17:02,938 - INFO - Database initialized successfully
+2025-04-25 17:17:02,939 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 17:17:02,940 - INFO - Starting top scorers update...
+2025-04-25 17:17:02,940 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:17:03,124 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 17:17:03,124 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:17:03,127 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 17:17:03,127 - INFO - Scheduler started
+2025-04-25 17:17:03,163 - WARNING -  * Debugger is active!
+2025-04-25 17:17:03,189 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 17:17:06,200 - INFO - 127.0.0.1 - - [25/Apr/2025 17:17:06] "GET / HTTP/1.1" 200 -
+2025-04-25 17:17:06,663 - INFO - 127.0.0.1 - - [25/Apr/2025 17:17:06] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 17:17:06,663 - INFO - 127.0.0.1 - - [25/Apr/2025 17:17:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 17:17:06,681 - INFO - Retrieved 0 records from database
+2025-04-25 17:17:06,682 - INFO - 127.0.0.1 - - [25/Apr/2025 17:17:06] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:22:07,204 - INFO - Retrieved 0 records from database
+2025-04-25 17:22:07,206 - INFO - 127.0.0.1 - - [25/Apr/2025 17:22:07] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:25:20,576 - INFO - 127.0.0.1 - - [25/Apr/2025 17:25:20] "GET / HTTP/1.1" 200 -
+2025-04-25 17:25:20,598 - INFO - 127.0.0.1 - - [25/Apr/2025 17:25:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 17:25:20,599 - INFO - 127.0.0.1 - - [25/Apr/2025 17:25:20] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 17:25:20,655 - INFO - Retrieved 0 records from database
+2025-04-25 17:25:20,656 - INFO - 127.0.0.1 - - [25/Apr/2025 17:25:20] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:25:21,174 - INFO - 127.0.0.1 - - [25/Apr/2025 17:25:21] "GET / HTTP/1.1" 200 -
+2025-04-25 17:25:21,187 - INFO - 127.0.0.1 - - [25/Apr/2025 17:25:21] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 17:25:21,190 - INFO - 127.0.0.1 - - [25/Apr/2025 17:25:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 17:25:21,210 - INFO - Retrieved 0 records from database
+2025-04-25 17:25:21,211 - INFO - 127.0.0.1 - - [25/Apr/2025 17:25:21] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:25:22,252 - INFO - Starting top scorers update...
+2025-04-25 17:25:22,252 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:25:22,479 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 17:25:22,480 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:25:22,480 - INFO - 127.0.0.1 - - [25/Apr/2025 17:25:22] "GET /refresh HTTP/1.1" 200 -
+2025-04-25 17:30:22,194 - INFO - Retrieved 0 records from database
+2025-04-25 17:30:22,196 - INFO - 127.0.0.1 - - [25/Apr/2025 17:30:22] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:35:22,170 - INFO - Retrieved 0 records from database
+2025-04-25 17:35:22,171 - INFO - 127.0.0.1 - - [25/Apr/2025 17:35:22] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:40:22,165 - INFO - Retrieved 0 records from database
+2025-04-25 17:40:22,167 - INFO - 127.0.0.1 - - [25/Apr/2025 17:40:22] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:45:22,177 - INFO - Retrieved 0 records from database
+2025-04-25 17:45:22,179 - INFO - 127.0.0.1 - - [25/Apr/2025 17:45:22] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:47:01,943 - INFO - Running job "update_top_scorers (trigger: interval[0:30:00], next run at: 2025-04-25 17:47:01 EDT)" (scheduled at 2025-04-25 17:47:01.916720-04:00)
+2025-04-25 17:47:01,945 - INFO - Starting top scorers update...
+2025-04-25 17:47:01,945 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:47:02,347 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 17:47:02,348 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:47:02,348 - INFO - Job "update_top_scorers (trigger: interval[0:30:00], next run at: 2025-04-25 18:17:01 EDT)" executed successfully
+2025-04-25 17:47:02,958 - INFO - Running job "update_top_scorers (trigger: interval[0:30:00], next run at: 2025-04-25 17:47:02 EDT)" (scheduled at 2025-04-25 17:47:02.939450-04:00)
+2025-04-25 17:47:02,959 - INFO - Starting top scorers update...
+2025-04-25 17:47:02,959 - INFO - Fetching games from the last 12 hours...
+2025-04-25 17:47:03,289 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 17:47:03,290 - INFO - No completed games found in the last 12 hours.
+2025-04-25 17:47:03,290 - INFO - Job "update_top_scorers (trigger: interval[0:30:00], next run at: 2025-04-25 18:17:02 EDT)" executed successfully
+2025-04-25 17:51:05,166 - INFO - Retrieved 0 records from database
+2025-04-25 17:51:05,167 - INFO - 127.0.0.1 - - [25/Apr/2025 17:51:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 17:56:05,175 - INFO - Retrieved 0 records from database
+2025-04-25 17:56:05,176 - INFO - 127.0.0.1 - - [25/Apr/2025 17:56:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:01:05,202 - INFO - Retrieved 0 records from database
+2025-04-25 18:01:05,204 - INFO - 127.0.0.1 - - [25/Apr/2025 18:01:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:06:05,200 - INFO - Retrieved 0 records from database
+2025-04-25 18:06:05,202 - INFO - 127.0.0.1 - - [25/Apr/2025 18:06:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:11:05,178 - INFO - Retrieved 0 records from database
+2025-04-25 18:11:05,179 - INFO - 127.0.0.1 - - [25/Apr/2025 18:11:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:16:05,175 - INFO - Retrieved 0 records from database
+2025-04-25 18:16:05,177 - INFO - 127.0.0.1 - - [25/Apr/2025 18:16:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:17:01,936 - INFO - Running job "update_top_scorers (trigger: interval[0:30:00], next run at: 2025-04-25 18:47:01 EDT)" (scheduled at 2025-04-25 18:17:01.916720-04:00)
+2025-04-25 18:17:01,938 - INFO - Starting top scorers update...
+2025-04-25 18:17:01,939 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:17:02,277 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 18:17:02,277 - INFO - No completed games found in the last 12 hours.
+2025-04-25 18:17:02,277 - INFO - Job "update_top_scorers (trigger: interval[0:30:00], next run at: 2025-04-25 18:47:01 EDT)" executed successfully
+2025-04-25 18:17:02,953 - INFO - Running job "update_top_scorers (trigger: interval[0:30:00], next run at: 2025-04-25 18:47:02 EDT)" (scheduled at 2025-04-25 18:17:02.939450-04:00)
+2025-04-25 18:17:02,953 - INFO - Starting top scorers update...
+2025-04-25 18:17:02,954 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:17:03,096 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 18:17:03,096 - INFO - No completed games found in the last 12 hours.
+2025-04-25 18:17:03,097 - INFO - Job "update_top_scorers (trigger: interval[0:30:00], next run at: 2025-04-25 18:47:02 EDT)" executed successfully
+2025-04-25 18:21:05,184 - INFO - Retrieved 0 records from database
+2025-04-25 18:21:05,185 - INFO - 127.0.0.1 - - [25/Apr/2025 18:21:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:26:05,185 - INFO - Retrieved 0 records from database
+2025-04-25 18:26:05,187 - INFO - 127.0.0.1 - - [25/Apr/2025 18:26:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:31:05,211 - INFO - Retrieved 0 records from database
+2025-04-25 18:31:05,212 - INFO - 127.0.0.1 - - [25/Apr/2025 18:31:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:36:05,192 - INFO - Retrieved 0 records from database
+2025-04-25 18:36:05,193 - INFO - 127.0.0.1 - - [25/Apr/2025 18:36:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:41:05,193 - INFO - Retrieved 0 records from database
+2025-04-25 18:41:05,194 - INFO - 127.0.0.1 - - [25/Apr/2025 18:41:05] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:41:33,882 - INFO -  * Detected change in '/Users/ryanwakely/Desktop/nba-custom-scores/nba_data.py', reloading
+2025-04-25 18:41:33,994 - INFO -  * Restarting with stat
+2025-04-25 18:41:35,621 - INFO - Database initialized successfully
+2025-04-25 18:41:35,623 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 18:41:35,623 - INFO - Starting top scorers update...
+2025-04-25 18:41:35,623 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:41:35,992 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 18:41:35,993 - INFO - No completed games found in the last 12 hours.
+2025-04-25 18:41:35,999 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 18:41:35,999 - INFO - Scheduler started
+2025-04-25 18:41:36,052 - WARNING -  * Debugger is active!
+2025-04-25 18:41:36,163 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 18:42:21,255 - INFO -  * Detected change in '/Users/ryanwakely/Desktop/nba-custom-scores/scoring.py', reloading
+2025-04-25 18:42:21,338 - INFO -  * Restarting with stat
+2025-04-25 18:42:22,278 - INFO - Database initialized successfully
+2025-04-25 18:42:22,280 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 18:42:22,281 - INFO - Starting top scorers update...
+2025-04-25 18:42:22,281 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:42:22,522 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 18:42:22,522 - INFO - No completed games found in the last 12 hours.
+2025-04-25 18:42:22,526 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 18:42:22,526 - INFO - Scheduler started
+2025-04-25 18:42:22,580 - WARNING -  * Debugger is active!
+2025-04-25 18:42:22,605 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 18:42:25,663 - INFO - 127.0.0.1 - - [25/Apr/2025 18:42:25] "GET / HTTP/1.1" 200 -
+2025-04-25 18:42:25,689 - INFO - 127.0.0.1 - - [25/Apr/2025 18:42:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 18:42:25,691 - INFO - 127.0.0.1 - - [25/Apr/2025 18:42:25] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 18:42:25,778 - INFO - Retrieved 0 records from database
+2025-04-25 18:42:25,779 - INFO - 127.0.0.1 - - [25/Apr/2025 18:42:25] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:42:26,446 - INFO - 127.0.0.1 - - [25/Apr/2025 18:42:26] "GET / HTTP/1.1" 200 -
+2025-04-25 18:42:26,453 - INFO - 127.0.0.1 - - [25/Apr/2025 18:42:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 18:42:26,456 - INFO - 127.0.0.1 - - [25/Apr/2025 18:42:26] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 18:42:26,467 - INFO - Retrieved 0 records from database
+2025-04-25 18:42:26,467 - INFO - 127.0.0.1 - - [25/Apr/2025 18:42:26] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:47:01,936 - INFO - Running job "update_top_scorers (trigger: interval[0:30:00], next run at: 2025-04-25 19:17:01 EDT)" (scheduled at 2025-04-25 18:47:01.916720-04:00)
+2025-04-25 18:47:01,939 - INFO - Starting top scorers update...
+2025-04-25 18:47:01,939 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:47:02,232 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 18:47:02,232 - INFO - No completed games found in the last 12 hours.
+2025-04-25 18:47:02,232 - INFO - Job "update_top_scorers (trigger: interval[0:30:00], next run at: 2025-04-25 19:17:01 EDT)" executed successfully
+2025-04-25 18:47:27,197 - INFO - Retrieved 0 records from database
+2025-04-25 18:47:27,199 - INFO - 127.0.0.1 - - [25/Apr/2025 18:47:27] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:47:43,360 - INFO -  * Detected change in '/Users/ryanwakely/Desktop/nba-custom-scores/scoring.py', reloading
+2025-04-25 18:47:43,461 - INFO -  * Restarting with stat
+2025-04-25 18:49:41,249 - INFO - Database initialized successfully
+2025-04-25 18:49:41,251 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 18:49:41,252 - INFO - Starting top scorers update...
+2025-04-25 18:49:41,252 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:49:41,481 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 18:49:41,481 - INFO - No completed games found in the last 12 hours.
+2025-04-25 18:49:41,485 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 18:49:41,485 - INFO - Scheduler started
+2025-04-25 18:49:41,547 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.0.0.39:8080
+2025-04-25 18:49:41,547 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 18:49:41,548 - INFO -  * Restarting with stat
+2025-04-25 18:49:42,259 - INFO - Database initialized successfully
+2025-04-25 18:49:42,260 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 18:49:42,261 - INFO - Starting top scorers update...
+2025-04-25 18:49:42,261 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:49:42,486 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 18:49:42,487 - INFO - No completed games found in the last 12 hours.
+2025-04-25 18:49:42,490 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 18:49:42,490 - INFO - Scheduler started
+2025-04-25 18:49:42,528 - WARNING -  * Debugger is active!
+2025-04-25 18:49:42,583 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 18:49:44,642 - INFO - 127.0.0.1 - - [25/Apr/2025 18:49:44] "GET / HTTP/1.1" 200 -
+2025-04-25 18:49:44,738 - INFO - 127.0.0.1 - - [25/Apr/2025 18:49:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 18:49:44,738 - INFO - 127.0.0.1 - - [25/Apr/2025 18:49:44] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 18:49:44,759 - INFO - Retrieved 0 records from database
+2025-04-25 18:49:44,759 - INFO - 127.0.0.1 - - [25/Apr/2025 18:49:44] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:49:46,384 - INFO - Starting top scorers update...
+2025-04-25 18:49:46,385 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:49:46,528 - INFO - Found 0 games in the last 21 hours.
+2025-04-25 18:49:46,529 - INFO - No completed games found in the last 12 hours.
+2025-04-25 18:49:46,529 - INFO - 127.0.0.1 - - [25/Apr/2025 18:49:46] "GET /refresh HTTP/1.1" 200 -
+2025-04-25 18:53:50,653 - INFO -  * Detected change in '/Users/ryanwakely/Desktop/nba-custom-scores/nba_data.py', reloading
+2025-04-25 18:53:50,762 - INFO -  * Restarting with stat
+2025-04-25 18:54:31,208 - INFO - Database initialized successfully
+2025-04-25 18:54:31,210 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 18:54:31,211 - INFO - Starting top scorers update...
+2025-04-25 18:54:31,211 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:54:31,211 - INFO - Fetching games for display from: 04/24/2025
+2025-04-25 18:54:31,385 - INFO - Found 3 games for 04/24/2025
+2025-04-25 18:54:31,385 - INFO - Found 3 completed games. Fetching player stats...
+2025-04-25 18:54:31,385 - INFO - Fetching stats for game ID: 0042400123
+2025-04-25 18:54:31,458 - INFO - Successfully fetched stats for 29 players
+2025-04-25 18:54:31,458 - INFO - Fetching stats for game ID: 0042400143
+2025-04-25 18:54:31,543 - INFO - Successfully fetched stats for 26 players
+2025-04-25 18:54:31,544 - INFO - Fetching stats for game ID: 0042400173
+2025-04-25 18:54:31,604 - INFO - Successfully fetched stats for 29 players
+2025-04-25 18:54:31,606 - INFO - Calculating custom scores...
+2025-04-25 18:54:31,612 - INFO - Successfully calculated custom scores
+2025-04-25 18:54:31,615 - INFO - Successfully filtered top 50 players
+2025-04-25 18:54:31,615 - INFO - Saving top scorers to database...
+2025-04-25 18:54:31,621 - INFO - Saved 50 player records to database
+2025-04-25 18:54:31,621 - INFO - Update completed successfully in 0.41 seconds!
+2025-04-25 18:54:31,625 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 18:54:31,625 - INFO - Scheduler started
+2025-04-25 18:54:31,697 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.0.0.39:8080
+2025-04-25 18:54:31,697 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 18:54:31,697 - INFO -  * Restarting with stat
+2025-04-25 18:54:32,393 - INFO - Database initialized successfully
+2025-04-25 18:54:32,394 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 18:54:32,395 - INFO - Starting top scorers update...
+2025-04-25 18:54:32,395 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:54:32,395 - INFO - Fetching games for display from: 04/24/2025
+2025-04-25 18:54:32,595 - INFO - Found 3 games for 04/24/2025
+2025-04-25 18:54:32,595 - INFO - Found 3 completed games. Fetching player stats...
+2025-04-25 18:54:32,595 - INFO - Fetching stats for game ID: 0042400123
+2025-04-25 18:54:32,648 - INFO - Successfully fetched stats for 29 players
+2025-04-25 18:54:32,649 - INFO - Fetching stats for game ID: 0042400143
+2025-04-25 18:54:32,774 - INFO - Successfully fetched stats for 26 players
+2025-04-25 18:54:32,774 - INFO - Fetching stats for game ID: 0042400173
+2025-04-25 18:54:32,960 - INFO - Successfully fetched stats for 29 players
+2025-04-25 18:54:32,961 - INFO - Calculating custom scores...
+2025-04-25 18:54:32,967 - INFO - Successfully calculated custom scores
+2025-04-25 18:54:32,969 - INFO - Successfully filtered top 50 players
+2025-04-25 18:54:32,969 - INFO - Saving top scorers to database...
+2025-04-25 18:54:32,976 - INFO - Saved 50 player records to database
+2025-04-25 18:54:32,977 - INFO - Update completed successfully in 0.58 seconds!
+2025-04-25 18:54:32,979 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 18:54:32,979 - INFO - Scheduler started
+2025-04-25 18:54:33,014 - WARNING -  * Debugger is active!
+2025-04-25 18:54:33,045 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 18:54:36,461 - INFO - 127.0.0.1 - - [25/Apr/2025 18:54:36] "GET / HTTP/1.1" 200 -
+2025-04-25 18:54:36,526 - INFO - 127.0.0.1 - - [25/Apr/2025 18:54:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 18:54:36,527 - INFO - 127.0.0.1 - - [25/Apr/2025 18:54:36] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 18:54:36,565 - INFO - Retrieved 50 records from database
+2025-04-25 18:54:36,571 - INFO - 127.0.0.1 - - [25/Apr/2025 18:54:36] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:54:36,575 - INFO - 127.0.0.1 - - [25/Apr/2025 18:54:36] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 18:57:27,368 - INFO -  * Detected change in '/Users/ryanwakely/Desktop/nba-custom-scores/app.py', reloading
+2025-04-25 18:57:27,465 - INFO -  * Restarting with stat
+2025-04-25 18:57:28,427 - INFO - Database initialized successfully
+2025-04-25 18:57:28,429 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 18:57:28,429 - INFO - Starting top scorers update...
+2025-04-25 18:57:28,429 - INFO - Fetching games from the last 12 hours...
+2025-04-25 18:57:28,429 - INFO - Fetching games for display from: 04/24/2025
+2025-04-25 18:57:28,598 - INFO - Found 3 games for 04/24/2025
+2025-04-25 18:57:28,598 - INFO - Found 3 completed games. Fetching player stats...
+2025-04-25 18:57:28,599 - INFO - Fetching stats for game ID: 0042400123
+2025-04-25 18:57:28,631 - INFO - Successfully fetched stats for 29 players
+2025-04-25 18:57:28,631 - INFO - Fetching stats for game ID: 0042400143
+2025-04-25 18:57:28,682 - INFO - Successfully fetched stats for 26 players
+2025-04-25 18:57:28,682 - INFO - Fetching stats for game ID: 0042400173
+2025-04-25 18:57:28,744 - INFO - Successfully fetched stats for 29 players
+2025-04-25 18:57:28,747 - INFO - Calculating custom scores...
+2025-04-25 18:57:28,753 - INFO - Successfully calculated custom scores
+2025-04-25 18:57:28,756 - INFO - Successfully filtered top 50 players
+2025-04-25 18:57:28,756 - INFO - Saving top scorers to database...
+2025-04-25 18:57:28,775 - INFO - Saved 50 player records to database
+2025-04-25 18:57:28,775 - INFO - Update completed successfully in 0.35 seconds!
+2025-04-25 18:57:28,780 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 18:57:28,781 - INFO - Scheduler started
+2025-04-25 18:57:28,820 - WARNING -  * Debugger is active!
+2025-04-25 18:57:28,844 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 18:59:12,238 - INFO - 10.0.0.25 - - [25/Apr/2025 18:59:12] "GET / HTTP/1.1" 200 -
+2025-04-25 18:59:14,280 - INFO - 10.0.0.25 - - [25/Apr/2025 18:59:14] "[33mPOST /ovrc/model HTTP/1.1[0m" 404 -
+2025-04-25 18:59:37,218 - INFO - Retrieved 50 records from database
+2025-04-25 18:59:37,224 - INFO - 127.0.0.1 - - [25/Apr/2025 18:59:37] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 18:59:37,243 - INFO - 127.0.0.1 - - [25/Apr/2025 18:59:37] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:00:28,439 - INFO - Running job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:00:28 EDT)" (scheduled at 2025-04-25 19:00:28.429282-04:00)
+2025-04-25 19:00:28,440 - INFO - Starting top scorers update...
+2025-04-25 19:00:28,440 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:00:28,441 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:00:28,599 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:00:28,599 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:00:28,599 - INFO - Job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:03:28 EDT)" executed successfully
+2025-04-25 19:00:56,245 - INFO - 127.0.0.1 - - [25/Apr/2025 19:00:56] "GET / HTTP/1.1" 200 -
+2025-04-25 19:00:56,295 - INFO - 127.0.0.1 - - [25/Apr/2025 19:00:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:00:56,299 - INFO - 127.0.0.1 - - [25/Apr/2025 19:00:56] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:00:56,305 - INFO - Retrieved 50 records from database
+2025-04-25 19:00:56,310 - INFO - 127.0.0.1 - - [25/Apr/2025 19:00:56] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:00:56,314 - INFO - 127.0.0.1 - - [25/Apr/2025 19:00:56] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:03:16,207 - INFO -  * Detected change in '/Users/ryanwakely/Desktop/nba-custom-scores/scoring.py', reloading
+2025-04-25 19:03:16,318 - INFO -  * Restarting with stat
+2025-04-25 19:03:17,370 - INFO - Database initialized successfully
+2025-04-25 19:03:17,372 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 19:03:17,373 - INFO - Starting top scorers update...
+2025-04-25 19:03:17,373 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:03:17,373 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:03:17,511 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:03:17,511 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:03:17,514 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 19:03:17,514 - INFO - Scheduler started
+2025-04-25 19:03:17,552 - WARNING -  * Debugger is active!
+2025-04-25 19:03:17,602 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 19:04:55,079 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:55] "GET / HTTP/1.1" 200 -
+2025-04-25 19:04:55,124 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:55] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:04:55,125 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:04:55,143 - INFO - Retrieved 50 records from database
+2025-04-25 19:04:55,148 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:55] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:04:55,151 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:55] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:04:55,725 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:55] "GET / HTTP/1.1" 200 -
+2025-04-25 19:04:55,732 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:55] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:04:55,732 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:04:55,752 - INFO - Retrieved 50 records from database
+2025-04-25 19:04:55,759 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:55] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:04:55,764 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:55] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:04:56,906 - INFO - Starting top scorers update...
+2025-04-25 19:04:56,907 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:04:56,907 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:04:57,015 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:04:57,015 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:04:57,016 - INFO - 127.0.0.1 - - [25/Apr/2025 19:04:57] "GET /refresh HTTP/1.1" 200 -
+2025-04-25 19:05:25,559 - INFO - Starting top scorers update...
+2025-04-25 19:05:25,560 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:05:25,560 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:05:25,620 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:05:25,620 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:05:25,621 - INFO - 127.0.0.1 - - [25/Apr/2025 19:05:25] "GET /refresh HTTP/1.1" 200 -
+2025-04-25 19:06:17,383 - INFO - Running job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:06:17 EDT)" (scheduled at 2025-04-25 19:06:17.372743-04:00)
+2025-04-25 19:06:17,385 - INFO - Starting top scorers update...
+2025-04-25 19:06:17,385 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:06:17,385 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:06:17,468 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:06:17,468 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:06:17,469 - INFO - Job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:09:17 EDT)" executed successfully
+2025-04-25 19:07:51,952 - INFO - 127.0.0.1 - - [25/Apr/2025 19:07:51] "GET / HTTP/1.1" 200 -
+2025-04-25 19:07:52,010 - INFO - 127.0.0.1 - - [25/Apr/2025 19:07:52] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:07:52,010 - INFO - 127.0.0.1 - - [25/Apr/2025 19:07:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:07:52,071 - INFO - Retrieved 50 records from database
+2025-04-25 19:07:52,075 - INFO - 127.0.0.1 - - [25/Apr/2025 19:07:52] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:07:52,081 - INFO - 127.0.0.1 - - [25/Apr/2025 19:07:52] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:09:06,727 - INFO - 127.0.0.1 - - [25/Apr/2025 19:09:06] "GET / HTTP/1.1" 200 -
+2025-04-25 19:09:06,744 - INFO - 127.0.0.1 - - [25/Apr/2025 19:09:06] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:09:06,745 - INFO - 127.0.0.1 - - [25/Apr/2025 19:09:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:09:06,813 - INFO - Retrieved 50 records from database
+2025-04-25 19:09:06,816 - INFO - 127.0.0.1 - - [25/Apr/2025 19:09:06] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:09:06,822 - INFO - 127.0.0.1 - - [25/Apr/2025 19:09:06] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:09:17,378 - INFO - Running job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:12:17 EDT)" (scheduled at 2025-04-25 19:09:17.372743-04:00)
+2025-04-25 19:09:17,379 - INFO - Starting top scorers update...
+2025-04-25 19:09:17,379 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:09:17,379 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:09:17,454 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:09:17,455 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:09:17,455 - INFO - Job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:12:17 EDT)" executed successfully
+2025-04-25 19:11:42,587 - INFO - Starting top scorers update...
+2025-04-25 19:11:42,588 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:11:42,588 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:11:42,781 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:11:42,781 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:11:42,782 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:42] "GET /refresh HTTP/1.1" 200 -
+2025-04-25 19:11:45,263 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:45] "GET / HTTP/1.1" 200 -
+2025-04-25 19:11:45,318 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:11:45,318 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:45] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:11:45,329 - INFO - Retrieved 50 records from database
+2025-04-25 19:11:45,337 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:45] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:11:45,342 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:45] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:11:46,077 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:46] "GET / HTTP/1.1" 200 -
+2025-04-25 19:11:46,089 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:11:46,089 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:46] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:11:46,118 - INFO - Retrieved 50 records from database
+2025-04-25 19:11:46,126 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:46] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:11:46,130 - INFO - 127.0.0.1 - - [25/Apr/2025 19:11:46] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:12:17,382 - INFO - Running job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:15:17 EDT)" (scheduled at 2025-04-25 19:12:17.372743-04:00)
+2025-04-25 19:12:17,383 - INFO - Starting top scorers update...
+2025-04-25 19:12:17,383 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:12:17,383 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:12:17,468 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:12:17,469 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:12:17,469 - INFO - Job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:15:17 EDT)" executed successfully
+2025-04-25 19:14:04,809 - INFO - 127.0.0.1 - - [25/Apr/2025 19:14:04] "GET / HTTP/1.1" 200 -
+2025-04-25 19:14:04,827 - INFO - 127.0.0.1 - - [25/Apr/2025 19:14:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:14:04,828 - INFO - 127.0.0.1 - - [25/Apr/2025 19:14:04] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:14:04,868 - INFO - Retrieved 50 records from database
+2025-04-25 19:14:04,874 - INFO - 127.0.0.1 - - [25/Apr/2025 19:14:04] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:14:04,878 - INFO - 127.0.0.1 - - [25/Apr/2025 19:14:04] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:14:29,292 - INFO - Database initialized successfully
+2025-04-25 19:14:29,294 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 19:14:29,294 - INFO - Starting top scorers update...
+2025-04-25 19:14:29,294 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:14:29,294 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:14:29,414 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:14:29,415 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:14:29,416 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 19:14:29,416 - INFO - Scheduler started
+2025-04-25 19:14:29,466 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.0.0.39:8080
+2025-04-25 19:14:29,466 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 19:14:29,467 - INFO -  * Restarting with stat
+2025-04-25 19:14:30,160 - INFO - Database initialized successfully
+2025-04-25 19:14:30,162 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 19:14:30,162 - INFO - Starting top scorers update...
+2025-04-25 19:14:30,162 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:14:30,162 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:14:30,240 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:14:30,240 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:14:30,242 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 19:14:30,242 - INFO - Scheduler started
+2025-04-25 19:14:30,270 - WARNING -  * Debugger is active!
+2025-04-25 19:14:30,303 - INFO -  * Debugger PIN: 119-354-372
+2025-04-25 19:14:30,314 - INFO - 127.0.0.1 - - [25/Apr/2025 19:14:30] "GET / HTTP/1.1" 200 -
+2025-04-25 19:14:30,342 - INFO - 127.0.0.1 - - [25/Apr/2025 19:14:30] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:14:30,342 - INFO - 127.0.0.1 - - [25/Apr/2025 19:14:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:14:30,377 - INFO - Retrieved 50 records from database
+2025-04-25 19:14:30,379 - INFO - 127.0.0.1 - - [25/Apr/2025 19:14:30] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:14:30,382 - INFO - 127.0.0.1 - - [25/Apr/2025 19:14:30] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:17:29,303 - INFO - Running job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:17:29 EDT)" (scheduled at 2025-04-25 19:17:29.294161-04:00)
+2025-04-25 19:17:29,304 - INFO - Starting top scorers update...
+2025-04-25 19:17:29,305 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:17:29,305 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:17:29,385 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:17:29,385 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:17:29,385 - INFO - Job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:20:29 EDT)" executed successfully
+2025-04-25 19:17:30,170 - INFO - Running job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:17:30 EDT)" (scheduled at 2025-04-25 19:17:30.162172-04:00)
+2025-04-25 19:17:30,172 - INFO - Starting top scorers update...
+2025-04-25 19:17:30,172 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:17:30,172 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:17:30,232 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:17:30,232 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:17:30,232 - INFO - Job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:20:30 EDT)" executed successfully
+2025-04-25 19:18:32,291 - INFO - 127.0.0.1 - - [25/Apr/2025 19:18:32] "GET / HTTP/1.1" 200 -
+2025-04-25 19:18:32,319 - INFO - 127.0.0.1 - - [25/Apr/2025 19:18:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:18:32,319 - INFO - 127.0.0.1 - - [25/Apr/2025 19:18:32] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:18:32,351 - INFO - Retrieved 50 records from database
+2025-04-25 19:18:32,361 - INFO - 127.0.0.1 - - [25/Apr/2025 19:18:32] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:18:32,365 - INFO - 127.0.0.1 - - [25/Apr/2025 19:18:32] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:20:29,304 - INFO - Running job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:23:29 EDT)" (scheduled at 2025-04-25 19:20:29.294161-04:00)
+2025-04-25 19:20:29,307 - INFO - Starting top scorers update...
+2025-04-25 19:20:29,308 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:20:29,308 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:20:29,429 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:20:29,430 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:20:29,430 - INFO - Job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:23:29 EDT)" executed successfully
+2025-04-25 19:20:30,169 - INFO - Running job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:23:30 EDT)" (scheduled at 2025-04-25 19:20:30.162172-04:00)
+2025-04-25 19:20:30,170 - INFO - Starting top scorers update...
+2025-04-25 19:20:30,170 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:20:30,170 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:20:30,236 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:20:30,237 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:20:30,237 - INFO - Job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:23:30 EDT)" executed successfully
+2025-04-25 19:22:18,094 - INFO - 127.0.0.1 - - [25/Apr/2025 19:22:18] "GET / HTTP/1.1" 200 -
+2025-04-25 19:22:18,152 - INFO - 127.0.0.1 - - [25/Apr/2025 19:22:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:22:18,153 - INFO - 127.0.0.1 - - [25/Apr/2025 19:22:18] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:22:18,245 - INFO - Retrieved 50 records from database
+2025-04-25 19:22:18,248 - INFO - 127.0.0.1 - - [25/Apr/2025 19:22:18] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:22:18,252 - INFO - 127.0.0.1 - - [25/Apr/2025 19:22:18] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:23:29,303 - INFO - Running job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:26:29 EDT)" (scheduled at 2025-04-25 19:23:29.294161-04:00)
+2025-04-25 19:23:29,305 - INFO - Starting top scorers update...
+2025-04-25 19:23:29,305 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:23:29,305 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:23:29,442 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:23:29,442 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:23:29,442 - INFO - Job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:26:29 EDT)" executed successfully
+2025-04-25 19:23:30,169 - INFO - Running job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:26:30 EDT)" (scheduled at 2025-04-25 19:23:30.162172-04:00)
+2025-04-25 19:23:30,170 - INFO - Starting top scorers update...
+2025-04-25 19:23:30,170 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:23:30,170 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:23:30,231 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:23:30,231 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:23:30,232 - INFO - Job "update_top_scorers (trigger: interval[0:03:00], next run at: 2025-04-25 19:26:30 EDT)" executed successfully
+2025-04-25 19:23:40,847 - INFO - 127.0.0.1 - - [25/Apr/2025 19:23:40] "GET / HTTP/1.1" 200 -
+2025-04-25 19:23:40,865 - INFO - 127.0.0.1 - - [25/Apr/2025 19:23:40] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:23:40,865 - INFO - 127.0.0.1 - - [25/Apr/2025 19:23:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:23:40,904 - INFO - Retrieved 50 records from database
+2025-04-25 19:23:40,908 - INFO - 127.0.0.1 - - [25/Apr/2025 19:23:40] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:23:40,913 - INFO - 127.0.0.1 - - [25/Apr/2025 19:23:40] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:40:56,550 - INFO - Database initialized successfully
+2025-04-25 19:40:56,553 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 19:40:56,554 - INFO - Starting top scorers update...
+2025-04-25 19:40:56,554 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:40:56,554 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:40:56,687 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:40:56,687 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:40:56,690 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 19:40:56,690 - INFO - Scheduler started
+2025-04-25 19:40:56,784 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.0.0.39:8080
+2025-04-25 19:40:56,785 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 19:40:56,785 - INFO -  * Restarting with stat
+2025-04-25 19:40:57,597 - INFO - Database initialized successfully
+2025-04-25 19:40:57,598 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 19:40:57,599 - INFO - Starting top scorers update...
+2025-04-25 19:40:57,599 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:40:57,599 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:40:57,749 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:40:57,749 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:40:57,751 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 19:40:57,751 - INFO - Scheduler started
+2025-04-25 19:40:57,783 - WARNING -  * Debugger is active!
+2025-04-25 19:40:57,821 - INFO -  * Debugger PIN: 916-750-333
+2025-04-25 19:41:00,132 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:00] "GET / HTTP/1.1" 200 -
+2025-04-25 19:41:00,218 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:00] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-04-25 19:41:00,218 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-04-25 19:41:00,357 - INFO - Retrieved 50 records from database
+2025-04-25 19:41:00,363 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:00] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:41:00,376 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:00] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:41:44,053 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:44] "GET / HTTP/1.1" 200 -
+2025-04-25 19:41:44,076 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:44] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-04-25 19:41:44,089 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:44] "GET /static/js/script.js HTTP/1.1" 200 -
+2025-04-25 19:41:44,154 - INFO - Retrieved 50 records from database
+2025-04-25 19:41:44,158 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:44] "GET /api/top-scorers HTTP/1.1" 200 -
+2025-04-25 19:41:44,160 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-25 19:41:44,162 - INFO - 127.0.0.1 - - [25/Apr/2025 19:41:44] "GET /api/last-update HTTP/1.1" 200 -
+2025-04-25 19:45:29,774 - INFO - Database initialized successfully
+2025-04-25 19:45:29,776 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 19:45:29,776 - INFO - Starting top scorers update...
+2025-04-25 19:45:29,776 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:45:29,776 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:45:29,932 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:45:29,932 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:45:29,935 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 19:45:29,935 - INFO - Scheduler started
+2025-04-25 19:45:29,990 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.0.0.39:8080
+2025-04-25 19:45:29,990 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 19:45:29,991 - INFO -  * Restarting with stat
+2025-04-25 19:45:30,676 - INFO - Database initialized successfully
+2025-04-25 19:45:30,677 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-25 19:45:30,678 - INFO - Starting top scorers update...
+2025-04-25 19:45:30,678 - INFO - Fetching games from the last 12 hours...
+2025-04-25 19:45:30,678 - INFO - Fetching games for display from: 04/25/2025
+2025-04-25 19:45:30,767 - INFO - Found 0 games for 04/25/2025
+2025-04-25 19:45:30,767 - INFO - No completed games found in the last 12 hours.
+2025-04-25 19:45:30,769 - INFO - Added job "update_top_scorers" to job store "default"
+2025-04-25 19:45:30,769 - INFO - Scheduler started
+2025-04-25 19:45:30,795 - WARNING -  * Debugger is active!
+2025-04-25 19:45:30,849 - INFO -  * Debugger PIN: 916-750-333
