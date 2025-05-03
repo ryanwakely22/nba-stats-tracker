@@ -1,0 +1,8 @@
+2025-04-28 23:28:35,063 - INFO - Starting database migration to add plus_minus column
+2025-04-28 23:28:35,068 - INFO - plus_minus column already exists in top_scorers table
+2025-04-28 23:28:35,068 - INFO - plus_minus column already exists in live_players table
+2025-04-28 23:28:35,068 - INFO - Database migration completed successfully
+2025-04-28 23:46:24,251 - INFO - Starting database migration to add plus_minus column
+2025-04-28 23:46:24,254 - INFO - plus_minus column already exists in top_scorers table
+2025-04-28 23:46:24,254 - INFO - plus_minus column already exists in live_players table
+2025-04-28 23:46:24,254 - INFO - Database migration completed successfully

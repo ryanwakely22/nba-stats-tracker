@@ -4,76 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA Custom Score Leaderboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
-        <header class="my-4 text-center">
+        <header>
             <h1>NBA Custom Score Leaderboard</h1>
-            <p class="lead">Top performers from games in the last 12 hours</p>
+            <div id="live-indicator" style="display: none;">
+                <span class="live-pulse"></span> LIVE DATA AVAILABLE
+            </div>
+            <p>Top performers from games in the last 12 hours</p>
+            
+            <!-- Data Toggle Switch -->
+            <div class="data-toggle-container">
+                <label class="toggle-switch">
+                    <span class="toggle-label">Completed Games</span>
+                    <input type="checkbox" id="data-toggle">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-label">Live Games</span>
+                </label>
+            </div>
+            
+            <button id="refresh-button">Refresh Data</button>
         </header>
 
-        <div class="row mb-3">
-            <div class="col">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="scoring-formula">
-                        <strong>Scoring Formula:</strong> 6.3755×PTS + 0.7251×REB + 2.6642×AST + 12.9899×STL + 3.1950×BLK - 8.1388×TO - 5.6948×FGA - 1.9597×FTA - 1.233×MIN
-                    </div>
-                    <button id="refresh-btn" class="btn btn-primary">
-                        Refresh Data
-                    </button>
-                </div>
-            </div>
+        <div id="loading-message">Loading player data...</div>
+        
+        <table id="players-table" style="display: none;">
+            <thead>
+                <tr>
+                    <th><strong>#</strong></th>
+                    <th><strong>Player</strong></th>
+                    <th><strong>Team</strong></th>
+                    <th><strong>MIN</strong></th>
+                    <th><strong>PTS</strong></th>
+                    <th><strong>REB</strong></th>
+                    <th><strong>AST</strong></th>
+                    <th><strong>STL</strong></th>
+                    <th><strong>BLK</strong></th>
+                    <th><strong>TO</strong></th>
+                    <th><strong>FGM</strong></th>
+                    <th><strong>FGA</strong></th>
+                    <th><strong>FG3M</strong></th>
+                    <th><strong>FG3A</strong></th>
+                    <th><strong>PF</strong></th>
+		    <th><strong>+/-</strong></th>
+                    <th><strong>EPA</strong></th>
+                </tr>
+            </thead>
+            <tbody id="player-data">
+                <!-- Player data will be populated here by JavaScript -->
+            </tbody>
+        </table>
+
+        <div id="top-performers-chart-container" style="display: none;">
+            <h2>Top 10 Performers</h2>
+            <canvas id="top-performers-chart"></canvas>
         </div>
 
-        <div class="row mb-3">
-            <div class="col">
-                <div class="alert alert-info" id="loading-alert">
-                    Loading player data...
-                </div>
-                <div class="alert alert-danger d-none" id="error-alert">
-                    Error loading data.
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>#</th>
-                                <th>Player</th>
-                                <th>Team</th>
-                                <th>MIN</th>
-                                <th>PTS</th>
-                                <th>REB</th>
-                                <th>AST</th>
-                                <th>STL</th>
-                                <th>BLK</th>
-                                <th>TO</th>
-                                <th>FGA</th>
-                                <th>FTA</th>
-                                <th>Custom Score</th>
-                            </tr>
-                        </thead>
-                        <tbody id="players-table">
-                            <!-- Data will be populated via JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <footer class="mt-4 text-center text-muted">
-            <p>Data updates automatically every 30 minutes. Last updated: <span id="last-updated">{{ last_update }}</span></p>
-            <p><small>Data provided by NBA Stats API.</small></p>
+        <footer>
+            <p>Data updates automatically every 30 minutes. Last updated: <span id="last-update-time">Loading...</span></p>
+            <p>Data provided by NBA Stats API.</p>
         </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="/static/js/script.js"></script>
 </body>
 </html>

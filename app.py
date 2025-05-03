@@ -1,11 +1,15 @@
 from flask import Flask, render_template, jsonify, request
-from database import init_db, get_latest_scorers, get_last_update_time
-from data_processor import update_top_scorers
+from database import init_db, get_latest_scorers, get_last_update_time, get_latest_live_data
+from data_processor import update_top_scorers, update_live_games
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.executors.pool import ThreadPoolExecutor
 import pandas as pd
 import logging
 import os
 from datetime import datetime
+
+# Import the migration function
+from db_migration import migrate_database  # Add this import
 
 # Set up logging
 logging.basicConfig(
@@ -19,10 +23,29 @@ app = Flask(__name__)
 # Initialize database
 init_db()
 
-# Create a scheduler for automatic updates
-scheduler = BackgroundScheduler()
-scheduler.add_job(update_top_scorers, 'interval', minutes=3)
+# Perform database migration to add plus_minus column
+migration_result = migrate_database()  # Add this line
+if migration_result:
+    logging.info("Database migration completed successfully")
+else:
+    logging.error("Database migration failed")
 
+# Create scheduler with limited concurrency to prevent database locks
+executors = {
+    'default': ThreadPoolExecutor(1)  # Limit to 1 thread to prevent concurrent DB access
+}
+
+# Create a scheduler for automatic updates
+scheduler = BackgroundScheduler(executors=executors, job_defaults={'misfire_grace_time': 30})
+scheduler.add_job(update_top_scorers, 'interval', minutes=30)
+
+# Add live game scheduler
+app.logger.info("Setting up live games scheduler")
+live_scheduler = BackgroundScheduler(executors=executors, job_defaults={'misfire_grace_time': 30})
+live_scheduler.add_job(update_live_games, 'interval', seconds=30)
+app.logger.info("Live scheduler job created")
+
+# Rest of your app.py remains the same...
 @app.route('/')
 def index():
     """Render the main page"""
@@ -46,18 +69,40 @@ def top_scorers_api():
         # Convert to list of dictionaries for JSON response
         players = []
         for _, row in df.iterrows():
+            # Format minutes properly if it's in an odd format
+            minutes_display = row['minutes']
+            if ':' in str(minutes_display):
+                try:
+                    parts = str(minutes_display).split(':')
+                    if '.' in parts[0]:
+                        minutes_part = parts[0].split('.')[0]  # Take just the integer part
+                        minutes_int = int(minutes_part)
+                    else:
+                        minutes_int = int(parts[0])
+                    
+                    seconds_int = int(parts[1]) if parts[1].isdigit() else 0
+                    minutes_display = f"{minutes_int}:{seconds_int:02d}"
+                except Exception as e:
+                    logging.error(f"Error formatting minutes {minutes_display}: {str(e)}")
+
+            total_rebounds = int(row['offensive_rebounds']) + int(row['defensive_rebounds'])
+            
             players.append({
                 'player_name': row['player_name'],
                 'team': row['team'],
-                'minutes': row['minutes'],
+                'minutes': minutes_display,
                 'points': int(row['points']),
-                'rebounds': int(row['rebounds']),
+                'rebounds': total_rebounds,
                 'assists': int(row['assists']),
                 'steals': int(row['steals']),
                 'blocks': int(row['blocks']),
                 'turnovers': int(row['turnovers']),
+                'field_goal_made': int(row['field_goal_made']),
                 'field_goal_attempts': int(row['field_goal_attempts']),
-                'free_throw_attempts': int(row['free_throw_attempts']),
+                'three_point_made': int(row['three_point_made']),
+                'three_point_attempts': int(row['three_point_attempts']),
+                'personal_fouls': int(row['personal_fouls']),
+                'plus_minus': int(row['plus_minus']),  # Add plus/minus
                 'custom_score': float(row['custom_score'])
             })
         
@@ -91,6 +136,76 @@ def last_update_api():
     else:
         return jsonify({'status': 'error', 'message': 'No update record found'})
 
+@app.route('/api/live-games')
+def live_games_api():
+    """API endpoint to get live game data"""
+    try:
+        df = get_latest_live_data()
+        
+        if df.empty:
+            return jsonify({'status': 'error', 'message': 'No live games data available', 'players': []})
+        
+        # Convert to list of dictionaries for JSON response
+        players = []
+        for _, row in df.iterrows():
+            # Format minutes properly if it's in an odd format
+            minutes_display = row['minutes']
+            if ':' in str(minutes_display):
+                try:
+                    parts = str(minutes_display).split(':')
+                    if '.' in parts[0]:
+                        minutes_part = parts[0].split('.')[0]  # Take just the integer part
+                        minutes_int = int(minutes_part)
+                    else:
+                        minutes_int = int(parts[0])
+                    
+                    seconds_int = int(parts[1]) if parts[1].isdigit() else 0
+                    minutes_display = f"{minutes_int}:{seconds_int:02d}"
+                except Exception as e:
+                    logging.error(f"Error formatting minutes {minutes_display}: {str(e)}")
+
+            total_rebounds = int(row['offensive_rebounds']) + int(row['defensive_rebounds'])
+            
+            players.append({
+                'player_name': row['player_name'],
+                'team': row['team'],
+                'minutes': minutes_display,
+                'points': int(row['points']),
+                'rebounds': total_rebounds,
+                'assists': int(row['assists']),
+                'steals': int(row['steals']),
+                'blocks': int(row['blocks']),
+                'turnovers': int(row['turnovers']),
+                'field_goal_made': int(row['field_goal_made']),
+                'field_goal_attempts': int(row['field_goal_attempts']),
+                'three_point_made': int(row['three_point_made']),
+                'three_point_attempts': int(row['three_point_attempts']),
+                'personal_fouls': int(row['personal_fouls']),
+                'plus_minus': int(row['plus_minus']),
+                'custom_score': float(row['custom_score'])
+            })
+        
+        return jsonify({'status': 'success', 'players': players})
+        
+    except Exception as e:
+        logging.error(f"Error in live_games_api: {str(e)}")
+        return jsonify({'status': 'error', 'message': str(e), 'players': []})
+
+@app.route('/refresh-live')
+def refresh_live_data():
+    """Force a refresh of the live data"""
+    try:
+        result = update_live_games()
+        
+        if result is not None and not result.empty:
+            return jsonify({'status': 'success', 'count': len(result)})
+        else:
+            return jsonify({'status': 'error', 'message': 'Failed to update live data or no live games available'})
+            
+    except Exception as e:
+        logging.error(f"Error in refresh_live_data: {str(e)}")
+        return jsonify({'status': 'error', 'message': str(e)})
+    
 if __name__ == '__main__':
     # Ensure templates and static directories exist
     os.makedirs('templates', exist_ok=True)
@@ -102,6 +217,9 @@ if __name__ == '__main__':
     
     # Start the scheduler
     scheduler.start()
+
+    # Start the live scheduler
+    live_scheduler.start()
     
     # Start the Flask app
     app.run(debug=True, host='0.0.0.0', port=8080)
