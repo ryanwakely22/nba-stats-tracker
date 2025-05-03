@@ -1,6 +1,6 @@
 from nba_data import get_games_last_12_hours, get_player_stats, get_live_games, get_live_player_stats
 from scoring import calculate_custom_score, get_top_scorers
-from database import init_db, save_top_scorers, save_live_data
+from database import init_db, save_top_scorers, save_live_data, clear_live_data
 import logging
 import time
 
@@ -63,7 +63,9 @@ def update_live_games():
         live_games = get_live_games()
         
         if not live_games:
-            logging.info("No live games found.")
+            logging.info("No live games found. Clearing live data...")
+            # Clear the live data table since no games are currently active
+            clear_live_data()
             return None
         
         logging.info(f"Found {len(live_games)} live games. Fetching player stats...")
@@ -72,7 +74,9 @@ def update_live_games():
         player_stats = get_live_player_stats(live_games)
         
         if player_stats.empty:
-            logging.info("No player stats retrieved for live games.")
+            logging.info("No player stats retrieved for live games. Clearing live data...")
+            # Clear the live data table if no valid stats
+            clear_live_data()
             return None
         
         # Log the data structure

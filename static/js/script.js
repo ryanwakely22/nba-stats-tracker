@@ -1,38 +1,25 @@
 // Add these variables at the top of your script.js file
 let currentSortColumn = 'custom_score'; // Default sort column
 let currentSortDirection = 'desc';      // Default direction (descending)
+let completedGamesData = [];
+let liveGamesData = [];
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Store fetched data globally
-    let completedGamesData = [];
-    let liveGamesData = [];
+    console.log("Initializing player stats dashboard with dynamic live games");
     
     // Initial data load
     fetchAllPlayerData();
     
+    // Set up toggle functionality
+    setupToggleButtons();
+    
+    // Show the default view (top scorers)
+    showView('topScorersView');
+    
     // Set up refresh button
     document.getElementById('refresh-button').addEventListener('click', function() {
-        document.getElementById('loading-message').style.display = 'block';
-        document.getElementById('players-table').style.display = 'none';
-        document.getElementById('top-performers-chart-container').style.display = 'none';
-        
-        fetch('/refresh')
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    fetchAllPlayerData();
-                } else {
-                    document.getElementById('loading-message').textContent = 'Error refreshing data: ' + data.message;
-                }
-            })
-            .catch(error => {
-                document.getElementById('loading-message').textContent = 'Error refreshing data: ' + error;
-            });
-    });
-    
-    // Set up the toggle switch
-    document.getElementById('data-toggle').addEventListener('change', function() {
-        displaySelectedData();
+        console.log("Manual refresh triggered");
+        refreshData();
     });
     
     // Set up column header click event listeners for sorting
@@ -45,28 +32,190 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(fetchAllPlayerData, 5 * 60 * 1000);
     
     // Auto-refresh live data every 30 seconds
-    setInterval(function() {
-        fetch('/refresh-live')
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    fetchLiveGamesData();
-                    console.log('Auto-refresh of live data completed');
-                }
-            })
-            .catch(error => {
-                console.error('Error during auto-refresh of live data:', error);
-            });
-    }, 30 * 1000);  // 30 seconds
+    setInterval(checkAndUpdateLiveGames, 30 * 1000);
     
     // Auto-refresh last update time every minute
     setInterval(fetchLastUpdateTime, 60 * 1000);
 });
 
-function setupSortableColumns() {
-    // Get all the column headers
-    const headers = document.querySelectorAll('#players-table thead th');
+function setupToggleButtons() {
+    console.log("Setting up toggle buttons");
     
+    // Top Scorers button
+    const topScorersButton = document.getElementById('topScorersButton');
+    if (topScorersButton) {
+        topScorersButton.addEventListener('click', function() {
+            console.log("Top Scorers view selected");
+            showView('topScorersView');
+            setActiveButton(topScorersButton);
+        });
+    }
+    
+    // Live Games button
+    const liveGamesButton = document.getElementById('liveGamesButton');
+    if (liveGamesButton) {
+        liveGamesButton.addEventListener('click', function() {
+            console.log("Live Games view selected");
+            showView('liveGamesView');
+            setActiveButton(liveGamesButton);
+            // Refresh live games data when switching to this view
+            checkAndUpdateLiveGames();
+        });
+    }
+}
+
+function showView(viewId) {
+    console.log(`Showing view: ${viewId}`);
+    
+    // Hide all views
+    const views = ['topScorersView', 'liveGamesView'];
+    views.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.style.display = 'none';
+        }
+    });
+    
+    // Show the selected view
+    const selectedView = document.getElementById(viewId);
+    if (selectedView) {
+        selectedView.style.display = 'block';
+    }
+    
+    // Update header description
+    const headerDescription = document.getElementById('header-description');
+    if (headerDescription) {
+        if (viewId === 'topScorersView') {
+            headerDescription.textContent = 'Top performers from games in the last 12 hours';
+        } else if (viewId === 'liveGamesView') {
+            headerDescription.textContent = 'Top performers from live games';
+        }
+    }
+    
+    // Update data display
+    displaySelectedData(viewId);
+}
+
+function setActiveButton(activeButton) {
+    console.log(`Setting active button: ${activeButton.id}`);
+    
+    // Remove active class from all toggle buttons
+    const buttons = document.querySelectorAll('.toggle-button');
+    buttons.forEach(button => {
+        button.classList.remove('active');
+    });
+    
+    // Add active class to the selected button
+    activeButton.classList.add('active');
+}
+
+function checkAndUpdateLiveGames() {
+    console.log("Checking for live games...");
+    fetch('/api/live-games')
+        .then(response => response.json())
+        .then(data => {
+            const liveGamesButton = document.getElementById('liveGamesButton');
+            
+            if (data.status === 'success' && data.players && data.players.length > 0) {
+                // Filter out players with 0 minutes
+                liveGamesData = data.players
+                    .filter(player => player.minutes !== "0:00" && player.minutes !== "0" && player.minutes !== "")
+                    .map(player => ({...player, isLive: true}));
+                
+                // Show the live games button if there are players with actual minutes
+                if (liveGamesButton && liveGamesData.length > 0) {
+                    liveGamesButton.style.display = 'inline-block';
+                    
+                    // Update the live games title with game count
+                    try {
+                        const uniqueTeams = new Set(liveGamesData.map(player => player.team));
+                        const approximateGames = Math.ceil(uniqueTeams.size / 2);
+                        const liveGamesTitle = document.getElementById('live-games-title');
+                        if (liveGamesTitle) {
+                            liveGamesTitle.textContent = `Live Games (${approximateGames} game${approximateGames !== 1 ? 's' : ''} in progress)`;
+                        }
+                    } catch (e) {
+                        console.error('Error calculating game count:', e);
+                    }
+                    
+                    // If we're currently viewing live games, update the display
+                    if (liveGamesButton.classList.contains('active')) {
+                        displaySelectedData('liveGamesView');
+                    }
+                } else {
+                    // No players with actual minutes - hide the button
+                    hideLiveGamesButton();
+                }
+                
+            } else {
+                // No live games - hide the button
+                liveGamesData = [];
+                hideLiveGamesButton();
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching live games:', error);
+            hideLiveGamesButton();
+        });
+}
+
+function hideLiveGamesButton() {
+    const liveGamesButton = document.getElementById('liveGamesButton');
+    const topScorersButton = document.getElementById('topScorersButton');
+    
+    if (liveGamesButton) {
+        liveGamesButton.style.display = 'none';
+        
+        // If we're currently viewing live games, switch to top scorers
+        if (liveGamesButton.classList.contains('active') && topScorersButton) {
+            topScorersButton.click();
+        }
+    }
+}
+
+function fetchAllPlayerData() {
+    // Show loading message
+    document.getElementById('loading-message').style.display = 'block';
+    
+    // Fetch both completed games and live games data
+    Promise.all([
+        fetch('/api/top-scorers').then(response => response.json()),
+        fetch('/api/live-games').then(response => response.json())
+    ])
+    .then(([completedData, liveData]) => {
+        // Store completed games data
+        if (completedData.status === 'success' && completedData.players.length > 0) {
+            completedGamesData = completedData.players.filter(player => 
+                player.minutes !== "0:00" && player.minutes !== "0" && player.minutes !== "");
+        } else {
+            completedGamesData = [];
+        }
+        
+        // Handle live games data
+        checkAndUpdateLiveGames();
+        
+        // Display the data based on current view
+        const activeView = document.querySelector('.toggle-button.active');
+        if (activeView) {
+            if (activeView.id === 'topScorersButton') {
+                displaySelectedData('topScorersView');
+            } else if (activeView.id === 'liveGamesButton' && liveGamesData.length > 0) {
+                displaySelectedData('liveGamesView');
+            }
+        } else {
+            displaySelectedData('topScorersView');
+        }
+        
+        // Hide loading message
+        document.getElementById('loading-message').style.display = 'none';
+    })
+    .catch(error => {
+        console.error('Error loading data:', error);
+        document.getElementById('loading-message').textContent = 'Error loading data: ' + error;
+    });
+}
+
+function setupSortableColumns() {
     // Define a mapping from column display names to data property names
     const columnMapping = {
         '#': 'rank',
@@ -84,42 +233,46 @@ function setupSortableColumns() {
         '3PM': 'three_point_made',
         '3PA': 'three_point_attempts',
         'PF': 'personal_fouls',
-	'+/-': 'plus_minus',
-        'Custom Score': 'custom_score'
+        '+/-': 'plus_minus',
+        'EPA': 'custom_score'
     };
     
-    // Add click event listeners to all column headers
-    headers.forEach(header => {
-        const columnName = header.textContent.trim().replace(/[^\w\s]/g, ''); // Remove any non-word characters
-        
-        // Get the data property name from the mapping, or use the column name if not found
-        const dataProperty = columnMapping[columnName] || columnName.toLowerCase().replace(/\s+/g, '_');
-        
-        // Skip columns that shouldn't be sortable
-        if (dataProperty === 'rank') return;
-        
-        // Add cursor pointer and hover effect
-        header.style.cursor = 'pointer';
-        header.classList.add('sortable');
-        
-        // Add the sort icon (initially hidden for all except custom_score)
-        const sortIcon = document.createElement('span');
-        sortIcon.classList.add('sort-icon');
-        sortIcon.innerHTML = dataProperty === 'custom_score' ? ' ↓' : '';
-        header.appendChild(sortIcon);
-        
-        // Add click event
-        header.addEventListener('click', function() {
-            sortTable(dataProperty);
-            
-            // Update the sort icons
-            document.querySelectorAll('.sort-icon').forEach(icon => {
-                icon.innerHTML = '';
+    // Add sortable functionality to both tables
+    ['players-table', 'live-players-table'].forEach(tableId => {
+        const table = document.getElementById(tableId);
+        if (table) {
+            const headers = table.querySelectorAll('thead th');
+            headers.forEach(header => {
+                const columnName = header.textContent.trim();
+                const dataProperty = columnMapping[columnName] || columnName.toLowerCase().replace(/\s+/g, '_');
+                
+                // Skip columns that shouldn't be sortable
+                if (dataProperty === '#' || dataProperty === 'rank') return;
+                
+                // Add cursor pointer and hover effect
+                header.style.cursor = 'pointer';
+                header.classList.add('sortable');
+                
+                // Add the sort icon
+                const sortIcon = document.createElement('span');
+                sortIcon.classList.add('sort-icon');
+                sortIcon.innerHTML = dataProperty === 'custom_score' ? ' ↓' : '';
+                header.appendChild(sortIcon);
+                
+                // Add click event
+                header.addEventListener('click', function() {
+                    sortTable(dataProperty);
+                    
+                    // Update the sort icons
+                    table.querySelectorAll('.sort-icon').forEach(icon => {
+                        icon.innerHTML = '';
+                    });
+                    
+                    // Show the appropriate icon based on sort direction
+                    sortIcon.innerHTML = currentSortDirection === 'asc' ? ' ↑' : ' ↓';
+                });
             });
-            
-            // Show the appropriate icon based on sort direction
-            sortIcon.innerHTML = currentSortDirection === 'asc' ? ' ↑' : ' ↓';
-        });
+        }
     });
 }
 
@@ -130,7 +283,6 @@ function fetchLastUpdateTime() {
             if (data.status === 'success') {
                 const lastUpdateElement = document.getElementById('last-update-time');
                 if (lastUpdateElement) {
-                    // Format the timestamp for display
                     const timestamp = new Date(data.last_update);
                     lastUpdateElement.textContent = timestamp.toLocaleString();
                 }
@@ -141,144 +293,57 @@ function fetchLastUpdateTime() {
         });
 }
 
-function fetchAllPlayerData() {
-    // Fetch both completed games and live games data
-    Promise.all([
-        fetch('/api/top-scorers').then(response => response.json()),
-        fetch('/api/live-games').then(response => response.json())
-    ])
-    .then(([completedData, liveData]) => {
-        // Store the fetched data globally
-        if (completedData.status === 'success' && completedData.players.length > 0) {
-            // Filter out players with 0 minutes
-            completedGamesData = completedData.players.filter(player => player.minutes !== "0:00" && player.minutes !== "0" && player.minutes !== "");
-        } else {
-            completedGamesData = [];
-        }
-        
-        if (liveData.status === 'success' && liveData.players.length > 0) {
-            // Filter out players with 0 minutes, then mark live game players for display purposes
-            liveGamesData = liveData.players
-                .filter(player => player.minutes !== "0:00" && player.minutes !== "0" && player.minutes !== "")
-                .map(player => ({...player, isLive: true}));
-            
-            // Show live indicator if there's live data
-            const liveIndicator = document.getElementById('live-indicator');
-            if (liveIndicator) {
-                liveIndicator.style.display = liveGamesData.length > 0 ? 'block' : 'none';
-            }
-            
-            // Auto-select live data if it's available
-            if (liveGamesData.length > 0 && completedGamesData.length > 0) {
-                document.getElementById('data-toggle').checked = true;
-            }
-        } else {
-            liveGamesData = [];
-            // Hide live indicator if there's no live data
-            const liveIndicator = document.getElementById('live-indicator');
-            if (liveIndicator) {
-                liveIndicator.style.display = 'none';
-            }
-        }
-        
-        // Display the data based on toggle state
-        displaySelectedData();
-        
-        // Hide loading message
-        document.getElementById('loading-message').style.display = 'none';
-    })
-    .catch(error => {
-        document.getElementById('loading-message').textContent = 'Error loading data: ' + error;
-    });
-}
-
-function fetchLiveGamesData() {
-    // Only refresh live games data
-    fetch('/api/live-games')
-        .then(response => response.json())
-        .then(liveData => {
-            if (liveData.status === 'success' && liveData.players.length > 0) {
-                // Filter out players with 0 minutes, then mark live game players for display purposes
-                liveGamesData = liveData.players
-                    .filter(player => player.minutes !== "0:00" && player.minutes !== "0" && player.minutes !== "")
-                    .map(player => ({...player, isLive: true}));
-                
-                // Show live indicator if there are players with minutes > 0
-                const liveIndicator = document.getElementById('live-indicator');
-                if (liveIndicator) {
-                    liveIndicator.style.display = liveGamesData.length > 0 ? 'block' : 'none';
-                }
-                
-                // If toggle is set to live games, update the display
-                if (document.getElementById('data-toggle').checked) {
-                    displaySelectedData();
-                }
-            } else {
-                liveGamesData = [];
-                // Hide live indicator if there's no live data
-                const liveIndicator = document.getElementById('live-indicator');
-                if (liveIndicator) {
-                    liveIndicator.style.display = 'none';
-                }
-                
-                // If toggle was set to live games but now there are none, switch to completed games
-                if (document.getElementById('data-toggle').checked && completedGamesData.length > 0) {
-                    document.getElementById('data-toggle').checked = false;
-                    displaySelectedData();
-                }
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching live games data:', error);
-        });
-}
-
 function sortTable(column) {
     // If clicking the same column, reverse the direction
     if (column === currentSortColumn) {
         currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
     } else {
-        // New column, set default direction (descending for numeric, ascending for text)
-        const numericColumns = ['points', 'rebounds', 'assists', 
-                              'steals', 'blocks', 'turnovers', 'field_goal_made', 'field_goal_attempts',
-                              'three_point_made', 'three_point_attempts', 'personal_fouls', 'custom_score'];
+        // New column, set default direction
+        const numericColumns = ['points', 'rebounds', 'assists', 'steals', 'blocks', 
+                              'turnovers', 'field_goal_made', 'field_goal_attempts',
+                              'three_point_made', 'three_point_attempts', 'personal_fouls', 
+                              'plus_minus', 'custom_score'];
         
         currentSortDirection = numericColumns.includes(column) ? 'desc' : 'asc';
         currentSortColumn = column;
     }
     
     // Refresh the display with new sort parameters
-    displaySelectedData();
+    const activeView = document.querySelector('.toggle-button.active');
+    if (activeView) {
+        const viewId = activeView.id === 'topScorersButton' ? 'topScorersView' : 'liveGamesView';
+        displaySelectedData(viewId);
+    }
 }
 
-function displaySelectedData() {
-    const showLiveData = document.getElementById('data-toggle').checked;
+function displaySelectedData(viewId) {
     let playersToDisplay = [];
+    let tableId = '';
+    let tableBodyId = '';
     
-    if (showLiveData && liveGamesData.length > 0) {
-        // Show live games data
-        playersToDisplay = liveGamesData;
-        
-        // Update header text
-        const headerText = document.querySelector('header p:first-of-type');
-        if (headerText) {
-            headerText.textContent = 'Top performers from today\'s live games';
-        }
-    } else {
-        // Show completed games data
+    if (viewId === 'topScorersView') {
         playersToDisplay = completedGamesData;
+        tableId = 'players-table';
+        tableBodyId = 'player-data';
         
-        // Update header text
-        const headerText = document.querySelector('header p:first-of-type');
-        if (headerText) {
-            headerText.textContent = 'Top performers from games in the last 12 hours';
-        }
-        
-        // If no completed games data is available
+        // Show no data message if needed
         if (playersToDisplay.length === 0) {
             document.getElementById('loading-message').textContent = 'No completed games data available';
             document.getElementById('loading-message').style.display = 'block';
-            document.getElementById('players-table').style.display = 'none';
+            document.getElementById('top-performers-chart-container').style.display = 'none';
+            return;
+        }
+    } else if (viewId === 'liveGamesView') {
+        playersToDisplay = liveGamesData;
+        tableId = 'live-players-table';
+        tableBodyId = 'live-player-data';
+        
+        // Show no live games message if needed
+        if (playersToDisplay.length === 0) {
+            const tableBody = document.getElementById(tableBodyId);
+            if (tableBody) {
+                tableBody.innerHTML = '<tr><td colspan="17" class="no-games-message">No live games at the moment. Check back during game time!</td></tr>';
+            }
             document.getElementById('top-performers-chart-container').style.display = 'none';
             return;
         }
@@ -295,29 +360,34 @@ function displaySelectedData() {
             bValue = parseFloat(bValue);
         }
         
-        // Special handling for minutes which is in format "MM:SS"
+        // Special handling for minutes
         if (currentSortColumn === 'minutes') {
             aValue = convertMinutesToSeconds(aValue);
             bValue = convertMinutesToSeconds(bValue);
         }
         
+        // Handle plus_minus values
+        if (currentSortColumn === 'plus_minus') {
+            aValue = parseInt(aValue) || 0;
+            bValue = parseInt(bValue) || 0;
+        }
+        
         // Compare based on direction
         if (currentSortDirection === 'asc') {
-            if (aValue < bValue) return -1;
-            if (aValue > bValue) return 1;
-            return 0;
+            return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
         } else {
-            if (aValue > bValue) return -1;
-            if (aValue < bValue) return 1;
-            return 0;
+            return aValue > bValue ? -1 : aValue < bValue ? 1 : 0;
         }
     });
     
-    // Update UI
-    populateTable(playersToDisplay);
-    createChart(playersToDisplay.slice(0, 10));
+    // Hide loading message
+    document.getElementById('loading-message').style.display = 'none';
     
-    document.getElementById('players-table').style.display = 'table';
+    // Update table
+    populateTable(playersToDisplay, tableBodyId);
+    
+    // Update chart
+    createChart(playersToDisplay.slice(0, 10));
     document.getElementById('top-performers-chart-container').style.display = 'block';
 }
 
@@ -336,14 +406,16 @@ function convertMinutesToSeconds(minutesStr) {
     }
 }
 
-function populateTable(players) {
-    const tableBody = document.getElementById('player-data');
+function populateTable(players, tableBodyId) {
+    const tableBody = document.getElementById(tableBodyId);
+    if (!tableBody) return;
+    
     tableBody.innerHTML = '';
     
     players.forEach((player, index) => {
         const row = document.createElement('tr');
         
-        // Add "LIVE" class to rows with live game data
+        // Add live game class if needed
         if (player.isLive) {
             row.classList.add('live-game');
         }
@@ -364,7 +436,7 @@ function populateTable(players) {
             <td>${player.three_point_made}</td>
             <td>${player.three_point_attempts}</td>
             <td>${player.personal_fouls}</td>
-	    <td>${player.plus_minus > 0 ? '+' + player.plus_minus : player.plus_minus}</td>
+            <td>${player.plus_minus > 0 ? '+' + player.plus_minus : player.plus_minus}</td>
             <td><strong>${player.custom_score.toFixed(2)}</strong></td>
         `;
         
@@ -372,38 +444,38 @@ function populateTable(players) {
     });
 }
 
-function createChart(players) {
-    // Reverse the array to display highest score at the top
-    const reversedPlayers = [...players].reverse();
+function refreshData() {
+    const activeView = document.querySelector('.toggle-button.active');
+    const viewType = activeView && activeView.id === 'liveGamesButton' ? 'live' : 'top';
     
-    const ctx = document.getElementById('top-performers-chart').getContext('2d');
+    document.getElementById('loading-message').textContent = 'Refreshing data...';
+    document.getElementById('loading-message').style.display = 'block';
     
-    // Destroy existing chart if it exists
-    if (window.topPerformersChart) {
-        window.topPerformersChart.destroy();
-    }
-    
-    window.topPerformersChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: reversedPlayers.map(player => `${player.player_name} (${player.team})`),
-            datasets: [{
-                label: 'Custom Score',
-                data: reversedPlayers.map(player => player.custom_score),
-                backgroundColor: reversedPlayers.map(player => player.isLive ? 'rgba(255, 77, 77, 0.6)' : 'rgba(54, 162, 235, 0.6)'),
-                borderColor: reversedPlayers.map(player => player.isLive ? 'rgba(255, 77, 77, 1)' : 'rgba(54, 162, 235, 1)'),
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            indexAxis: 'y',  // This makes the bar chart horizontal
-            scales: {
-                x: {
-                    beginAtZero: true
+    if (viewType === 'live') {
+        fetch('/refresh-live')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    checkAndUpdateLiveGames();
+                } else {
+                    document.getElementById('loading-message').textContent = 'Error refreshing live data: ' + data.message;
                 }
-            }
-        }
-    });
+            })
+            .catch(error => {
+                document.getElementById('loading-message').textContent = 'Error refreshing live data: ' + error;
+            });
+    } else {
+        fetch('/refresh')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    fetchAllPlayerData();
+                } else {
+                    document.getElementById('loading-message').textContent = 'Error refreshing data: ' + data.message;
+                }
+            })
+            .catch(error => {
+                document.getElementById('loading-message').textContent = 'Error refreshing data: ' + error;
+            });
+    }
 }

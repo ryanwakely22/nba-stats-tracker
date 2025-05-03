@@ -3,6 +3,7 @@ import pandas as pd
 from datetime import datetime
 import logging
 import os
+import time
 
 logging.basicConfig(
     level=logging.INFO,
@@ -12,10 +13,30 @@ logging.basicConfig(
 
 DB_NAME = 'nba_scores.db'
 
+def get_db_connection(max_retries=5, retry_delay=1.0):
+    """Get a database connection with retry logic for locked database"""
+    retries = 0
+    while retries < max_retries:
+        try:
+            # Use a timeout to prevent indefinite waiting on locks
+            conn = sqlite3.connect(DB_NAME, timeout=20.0)
+            return conn
+        except sqlite3.OperationalError as e:
+            if "database is locked" in str(e):
+                logging.warning(f"Database locked, retrying ({retries+1}/{max_retries})...")
+                time.sleep(retry_delay)
+                retries += 1
+            else:
+                # Re-raise if it's not a locking error
+                raise
+    
+    # If we get here, we've exhausted our retries
+    raise sqlite3.OperationalError("Could not access database after multiple retries - database is locked")
+
 def init_db():
     """Initialize the database with required tables"""
     try:
-        conn = get_db_connection()
+        conn = sqlite3.connect(DB_NAME)
         
         with conn:
             # Create top_scorers table with all needed columns
@@ -87,6 +108,24 @@ def init_db():
         logging.error(f"Error initializing database: {str(e)}")
         return False
 
+def clear_live_data():
+    """Clear all live player data when no games are active"""
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        
+        # Clear the live_players table
+        cursor.execute("DELETE FROM live_players")
+        
+        conn.commit()
+        conn.close()
+        
+        logging.info("Cleared live game data from database")
+        return True
+        
+    except Exception as e:
+        logging.error(f"Error clearing live data: {str(e)}")
+        return False
 
 def save_top_scorers(top_scorers_df):
     """Save top scorers to database"""
@@ -105,6 +144,13 @@ def save_top_scorers(top_scorers_df):
         # Convert DataFrame to database records
         records = []
         for _, row in top_scorers_df.iterrows():
+            # Get plus_minus value - handle both uppercase and lowercase column names
+            plus_minus_value = 0
+            if 'PLUS_MINUS' in row:
+                plus_minus_value = int(row['PLUS_MINUS'])
+            elif 'plus_minus' in row:
+                plus_minus_value = int(row['plus_minus'])
+                
             records.append((
                 row['PLAYER_NAME'],
                 row['TEAM_ABBREVIATION'],
@@ -122,7 +168,7 @@ def save_top_scorers(top_scorers_df):
                 int(row['FG3A']),
                 int(row['PF']),
                 int(row.get('FTA', 0)),  # Use get with default in case FTA is no longer included
-                int(row.get('PLUS_MINUS', 0)),  # Add the plus/minus stat
+                plus_minus_value,  # Use the extracted plus_minus value
                 float(row['CUSTOM_SCORE']),
                 datetime.now()
             ))
@@ -164,9 +210,6 @@ def save_live_data(live_player_data):
         if not live_player_data.empty:
             sample_row = live_player_data.iloc[0].to_dict()
             logging.info(f"Sample data before saving: {sample_row}")
-            # Check specifically for PLUS_MINUS column
-            if 'PLUS_MINUS' in sample_row:
-                logging.info(f"PLUS_MINUS value: {sample_row['PLUS_MINUS']}")
         
         # Connect to the database
         conn = get_db_connection()
@@ -181,11 +224,12 @@ def save_live_data(live_player_data):
             # Ensure we're using MIN, not MIN_NUMERIC for display
             minutes_display = row['MIN'] if 'MIN' in row else '0:00'
             
-            # Get PLUS_MINUS value (it exists in uppercase in the dataframe)
+            # Get plus_minus value - handle both uppercase and lowercase column names
             plus_minus_value = 0
             if 'PLUS_MINUS' in row:
-                plus_minus_value = int(row['PLUS_MINUS'])
-                logging.info(f"Found PLUS_MINUS for {row['PLAYER_NAME']}: {plus_minus_value}")
+                plus_minus_value = int(row['PLUS_MINUS']) 
+            elif 'plus_minus' in row:
+                plus_minus_value = int(row['plus_minus'])
             
             record = (
                 row['PLAYER_NAME'],
@@ -203,7 +247,7 @@ def save_live_data(live_player_data):
                 int(row['FG3M']),
                 int(row['FG3A']),
                 int(row['PF']),
-                plus_minus_value,  # Use the PLUS_MINUS value from uppercase column
+                plus_minus_value,  # Use the extracted plus_minus value
                 float(row['CUSTOM_SCORE']),
                 datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
             )
@@ -282,26 +326,3 @@ def get_last_update_time():
     except Exception as e:
         logging.error(f"Error getting last update time: {str(e)}")
         return None
-
-import time
-import sqlite3
-
-def get_db_connection(max_retries=5, retry_delay=1.0):
-    """Get a database connection with retry logic for locked database"""
-    retries = 0
-    while retries < max_retries:
-        try:
-            # Use a timeout to prevent indefinite waiting on locks
-            conn = sqlite3.connect(DB_NAME, timeout=20.0)
-            return conn
-        except sqlite3.OperationalError as e:
-            if "database is locked" in str(e):
-                logging.warning(f"Database locked, retrying ({retries+1}/{max_retries})...")
-                time.sleep(retry_delay)
-                retries += 1
-            else:
-                # Re-raise if it's not a locking error
-                raise
-    
-    # If we get here, we've exhausted our retries
-    raise sqlite3.OperationalError("Could not access database after multiple retries - database is locked")

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request
-from database import init_db, get_latest_scorers, get_last_update_time, get_latest_live_data
+from database import init_db, get_latest_scorers, get_last_update_time, get_latest_live_data, clear_live_data
 from data_processor import update_top_scorers, update_live_games
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.executors.pool import ThreadPoolExecutor
@@ -30,6 +30,10 @@ if migration_result:
 else:
     logging.error("Database migration failed")
 
+# Clear live data on startup to ensure clean state
+clear_live_data()
+logging.info("Cleared live data on startup")
+
 # Create scheduler with limited concurrency to prevent database locks
 executors = {
     'default': ThreadPoolExecutor(1)  # Limit to 1 thread to prevent concurrent DB access
@@ -45,7 +49,6 @@ live_scheduler = BackgroundScheduler(executors=executors, job_defaults={'misfire
 live_scheduler.add_job(update_live_games, 'interval', seconds=30)
 app.logger.info("Live scheduler job created")
 
-# Rest of your app.py remains the same...
 @app.route('/')
 def index():
     """Render the main page"""
@@ -102,7 +105,7 @@ def top_scorers_api():
                 'three_point_made': int(row['three_point_made']),
                 'three_point_attempts': int(row['three_point_attempts']),
                 'personal_fouls': int(row['personal_fouls']),
-                'plus_minus': int(row['plus_minus']),  # Add plus/minus
+                'plus_minus': int(row['plus_minus']),
                 'custom_score': float(row['custom_score'])
             })
         
@@ -191,6 +194,37 @@ def live_games_api():
         logging.error(f"Error in live_games_api: {str(e)}")
         return jsonify({'status': 'error', 'message': str(e), 'players': []})
 
+@app.route('/api/live-games-status')
+def live_games_status():
+    """Check if there are any live games"""
+    try:
+        df = get_latest_live_data()
+        
+        has_live_games = not df.empty
+        player_count = len(df) if has_live_games else 0
+        
+        # Try to determine unique game count (you might need to adjust this based on your data)
+        unique_games = 0
+        if has_live_games:
+            # This is a simple way - you might need to add game_id to your data
+            teams = df['team'].unique()
+            unique_games = len(teams) // 2  # Rough estimate
+        
+        return jsonify({
+            'status': 'success',
+            'has_live_games': has_live_games,
+            'player_count': player_count,
+            'game_count': unique_games
+        })
+        
+    except Exception as e:
+        logging.error(f"Error checking live games status: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
+            'has_live_games': False
+        })
+
 @app.route('/refresh-live')
 def refresh_live_data():
     """Force a refresh of the live data"""
@@ -199,8 +233,11 @@ def refresh_live_data():
         
         if result is not None and not result.empty:
             return jsonify({'status': 'success', 'count': len(result)})
+        elif result is None:
+            # No live games - this is normal and should clear the data
+            return jsonify({'status': 'success', 'message': 'No live games available', 'count': 0})
         else:
-            return jsonify({'status': 'error', 'message': 'Failed to update live data or no live games available'})
+            return jsonify({'status': 'success', 'message': 'No players with stats in live games', 'count': 0})
             
     except Exception as e:
         logging.error(f"Error in refresh_live_data: {str(e)}")
@@ -223,3 +260,31 @@ if __name__ == '__main__':
     
     # Start the Flask app
     app.run(debug=True, host='0.0.0.0', port=8080)
+
+# If running with gunicorn in production (Render.com), these need to run outside __main__
+else:
+    # Ensure directories exist
+    os.makedirs('templates', exist_ok=True)
+    os.makedirs('static/css', exist_ok=True)
+    os.makedirs('static/js', exist_ok=True)
+    
+    # Initialize database
+    init_db()
+    
+    # Perform database migration
+    migration_result = migrate_database()
+    if migration_result:
+        logging.info("Database migration completed successfully")
+    else:
+        logging.error("Database migration failed")
+    
+    # Clear live data on startup
+    clear_live_data()
+    logging.info("Cleared live data on startup")
+    
+    # Run the initial update
+    update_top_scorers()
+    
+    # Start the schedulers
+    scheduler.start()
+    live_scheduler.start()
