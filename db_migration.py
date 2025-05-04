@@ -17,7 +17,9 @@ def get_db_connection(max_retries=5, retry_delay=1.0):
     while retries < max_retries:
         try:
             # Use a timeout to prevent indefinite waiting on locks
-            conn = sqlite3.connect(DB_NAME, timeout=20.0)
+            conn = sqlite3.connect(DB_NAME, timeout=30.0, check_same_thread=False)
+            # Enable WAL mode for better concurrency
+            conn.execute('PRAGMA journal_mode=WAL')
             return conn
         except sqlite3.OperationalError as e:
             if "database is locked" in str(e):
@@ -25,11 +27,9 @@ def get_db_connection(max_retries=5, retry_delay=1.0):
                 time.sleep(retry_delay)
                 retries += 1
             else:
-                # Re-raise if it's not a locking error
                 raise
     
-    # If we get here, we've exhausted our retries
-    raise sqlite3.OperationalError("Could not access database after multiple retries - database is locked")
+    raise sqlite3.OperationalError("Could not access database after multiple retries")
 
 def migrate_database():
     """Add plus_minus column to existing tables"""

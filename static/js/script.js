@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('loading-message').textContent = 'Error refreshing data: ' + error;
             });
     });
+
     
     // Set up the toggle switch
     document.getElementById('data-toggle').addEventListener('change', function() {

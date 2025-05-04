@@ -28,7 +28,7 @@ def update_top_scorers():
         
         if not game_ids:
             logging.info("No completed games found in the last 12 hours.")
-            return None
+            return pd.DataFrame()  # Return empty DataFrame instead of None
         
         logging.info(f"Found {len(game_ids)} completed games. Fetching player stats...")
         
@@ -37,29 +37,46 @@ def update_top_scorers():
         
         if player_stats.empty:
             logging.info("No player stats retrieved.")
-            return None
+            return pd.DataFrame()
         
         logging.info(f"Retrieved stats for {len(player_stats)} players")
         
+        # Validate required columns
+        required_columns = ['PLAYER_NAME', 'TEAM_ABBREVIATION', 'MIN', 'PTS', 'OREB', 'DREB', 
+                          'AST', 'STL', 'BLK', 'TO', 'FGM', 'FGA', 'FG3M', 'FG3A', 'PF']
+        missing_columns = [col for col in required_columns if col not in player_stats.columns]
+        
+        if missing_columns:
+            logging.error(f"Missing required columns: {missing_columns}")
+            return pd.DataFrame()
+        
         # Calculate top scorers
         logging.info("Calculating custom scores...")
-        top_players = get_top_scorers(player_stats, limit=100)
+        try:
+            top_players = get_top_scorers(player_stats, limit=100)
+        except Exception as e:
+            logging.error(f"Error calculating custom scores: {str(e)}")
+            return pd.DataFrame()
         
         if top_players.empty:
             logging.warning("No players with valid stats found")
-            return None
+            return pd.DataFrame()
         
         logging.info(f"Calculated custom scores for {len(top_players)} players")
         
         # Save to database
         logging.info("Saving top scorers to database...")
-        save_result = save_top_scorers(top_players)
+        try:
+            save_result = save_top_scorers(top_players)
+        except Exception as e:
+            logging.error(f"Error saving to database: {str(e)}")
+            return pd.DataFrame()
         
         if save_result:
             logging.info(f"Successfully saved {len(top_players)} player records to database")
         else:
             logging.error("Failed to save player records to database")
-            return None
+            return pd.DataFrame()
         
         elapsed_time = time.time() - start_time
         logging.info(f"Update completed successfully in {elapsed_time:.2f} seconds!")
@@ -69,7 +86,7 @@ def update_top_scorers():
         logging.error(f"Error updating top scorers: {str(e)}")
         import traceback
         logging.error(traceback.format_exc())
-        return None
+        return pd.DataFrame()
 
 def update_live_games():
     """Update the database with latest live game stats"""
