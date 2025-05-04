@@ -11,83 +11,54 @@
     <div class="container">
         <header>
             <h1>NBA Custom Score Leaderboard</h1>
+            <div id="live-indicator" style="display: none;">
+                <span class="live-pulse"></span> LIVE DATA AVAILABLE
+            </div>
             <p id="header-description">Top performers from games in the last 12 hours</p>
             
-            <!-- Toggle Buttons -->
-            <div class="toggle-container">
-                <button id="topScorersButton" class="toggle-button active">Top Scorers</button>
-                <button id="liveGamesButton" class="toggle-button">
-                    <span class="live-indicator"></span>Live Games
-                </button>
+            <!-- Data Toggle Switch - Only shown when live games exist -->
+            <div class="data-toggle-container" id="toggle-container" style="display: none;">
+                <label class="toggle-switch">
+                    <span class="toggle-label">Completed Games</span>
+                    <input type="checkbox" id="data-toggle">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-label">Live Games</span>
+                </label>
             </div>
             
-            <button id="refresh-button" class="refresh-button">Refresh Data</button>
+            <button id="refresh-button">Refresh Data</button>
         </header>
 
         <div id="loading-message">Loading player data...</div>
         
-        <!-- Top Scorers View -->
-        <div id="topScorersView" class="view-container">
-            <table id="players-table" class="stats-table">
-                <thead>
-                    <tr>
-                        <th><strong>#</strong></th>
-                        <th><strong>Player</strong></th>
-                        <th><strong>Team</strong></th>
-                        <th><strong>MIN</strong></th>
-                        <th><strong>PTS</strong></th>
-                        <th><strong>REB</strong></th>
-                        <th><strong>AST</strong></th>
-                        <th><strong>STL</strong></th>
-                        <th><strong>BLK</strong></th>
-                        <th><strong>TO</strong></th>
-                        <th><strong>FGM</strong></th>
-                        <th><strong>FGA</strong></th>
-                        <th><strong>3PM</strong></th>
-                        <th><strong>3PA</strong></th>
-                        <th><strong>PF</strong></th>
-                        <th><strong>+/-</strong></th>
-                        <th><strong>EPA</strong></th>
-                    </tr>
-                </thead>
-                <tbody id="player-data">
-                    <!-- Player data will be populated here by JavaScript -->
-                </tbody>
-            </table>
-        </div>
+        <table id="players-table" style="display: none;">
+            <thead>
+                <tr>
+                    <th><strong>#</strong></th>
+                    <th><strong>Player</strong></th>
+                    <th><strong>Team</strong></th>
+                    <th><strong>MIN</strong></th>
+                    <th><strong>PTS</strong></th>
+                    <th><strong>REB</strong></th>
+                    <th><strong>AST</strong></th>
+                    <th><strong>STL</strong></th>
+                    <th><strong>BLK</strong></th>
+                    <th><strong>TO</strong></th>
+                    <th><strong>FGM</strong></th>
+                    <th><strong>FGA</strong></th>
+                    <th><strong>3PM</strong></th>
+                    <th><strong>3PA</strong></th>
+                    <th><strong>PF</strong></th>
+                    <th><strong>+/-</strong></th>
+                    <th><strong>EPA</strong></th>
+                </tr>
+            </thead>
+            <tbody id="player-data">
+                <!-- Player data will be populated here by JavaScript -->
+            </tbody>
+        </table>
 
-        <!-- Live Games View -->
-        <div id="liveGamesView" class="view-container" style="display: none;">
-            <h2 id="live-games-title">Live Games</h2>
-            <table id="live-players-table" class="stats-table">
-                <thead>
-                    <tr>
-                        <th><strong>#</strong></th>
-                        <th><strong>Player</strong></th>
-                        <th><strong>Team</strong></th>
-                        <th><strong>MIN</strong></th>
-                        <th><strong>PTS</strong></th>
-                        <th><strong>REB</strong></th>
-                        <th><strong>AST</strong></th>
-                        <th><strong>STL</strong></th>
-                        <th><strong>BLK</strong></th>
-                        <th><strong>TO</strong></th>
-                        <th><strong>FGM</strong></th>
-                        <th><strong>FGA</strong></th>
-                        <th><strong>3PM</strong></th>
-                        <th><strong>3PA</strong></th>
-                        <th><strong>PF</strong></th>
-                        <th><strong>+/-</strong></th>
-                        <th><strong>EPA</strong></th>
-                    </tr>
-                </thead>
-                <tbody id="live-player-data">
-                    <!-- Live player data will be populated here by JavaScript -->
-                </tbody>
-            </table>
-        </div>
-
-        <div id="top-performers-chart-container" class="chart-container">
+        <div id="top-performers-chart-container" style="display: none;">
             <h2>Top 10 Performers</h2>
             <canvas id="top-performers-chart"></canvas>
         </div>

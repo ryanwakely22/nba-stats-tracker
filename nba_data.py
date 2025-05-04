@@ -398,17 +398,6 @@ def get_live_games():
         # If no live games found from either day, check for upcoming games as a fallback
         if not all_live_games:
             logging.info("No active games found. Checking for upcoming games...")
-            
-            # Check today's upcoming games
-            today_upcoming_games = today_games_df[today_games_df['GAME_STATUS_ID'] == 1]
-            
-            if not today_upcoming_games.empty:
-                upcoming_game_ids = today_upcoming_games['GAME_ID'].tolist()
-                logging.info(f"Found {len(upcoming_game_ids)} upcoming games with status ID 1")
-                return upcoming_game_ids
-            else:
-                logging.info("No upcoming games found with status ID 1")
-                return []
         
         logging.info(f"Found a total of {len(all_live_games)} live games across both days")
         return all_live_games
