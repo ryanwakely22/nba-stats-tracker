@@ -1,14 +1,19 @@
+# data_processor.py - Improved version with better error handling
+
 from nba_data import get_games_last_12_hours, get_player_stats, get_live_games, get_live_player_stats
 from scoring import calculate_custom_score, get_top_scorers
 from database import init_db, save_top_scorers, save_live_data, clear_live_data
 import logging
 import time
+import sys
 
-# Set up logging
+# Configure logging to console
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    filename='nba_processor.log'
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout)
+    ]
 )
 
 def update_top_scorers():
@@ -34,6 +39,8 @@ def update_top_scorers():
             logging.info("No player stats retrieved.")
             return None
         
+        logging.info(f"Retrieved stats for {len(player_stats)} players")
+        
         # Calculate top scorers
         logging.info("Calculating custom scores...")
         top_players = get_top_scorers(player_stats, limit=100)
@@ -42,9 +49,17 @@ def update_top_scorers():
             logging.warning("No players with valid stats found")
             return None
         
+        logging.info(f"Calculated custom scores for {len(top_players)} players")
+        
         # Save to database
         logging.info("Saving top scorers to database...")
-        save_top_scorers(top_players)
+        save_result = save_top_scorers(top_players)
+        
+        if save_result:
+            logging.info(f"Successfully saved {len(top_players)} player records to database")
+        else:
+            logging.error("Failed to save player records to database")
+            return None
         
         elapsed_time = time.time() - start_time
         logging.info(f"Update completed successfully in {elapsed_time:.2f} seconds!")
@@ -52,6 +67,8 @@ def update_top_scorers():
         
     except Exception as e:
         logging.error(f"Error updating top scorers: {str(e)}")
+        import traceback
+        logging.error(traceback.format_exc())
         return None
 
 def update_live_games():
@@ -79,17 +96,32 @@ def update_live_games():
             clear_live_data()
             return None
         
+        logging.info(f"Retrieved stats for {len(player_stats)} players from live games")
+        
         # Log the data structure
         logging.info(f"Live data columns: {player_stats.columns.tolist()}")
         if not player_stats.empty:
-            logging.info(f"Sample player: {player_stats.iloc[0].to_dict()}")
+            sample_player = player_stats.iloc[0].to_dict()
+            logging.info(f"Sample player data: {sample_player}")
         
         # Calculate custom scores - make sure is_live=True so we include all players
         live_player_data = get_top_scorers(player_stats, limit=100, is_live=True)
         
+        if live_player_data.empty:
+            logging.warning("No valid player data after processing")
+            clear_live_data()
+            return None
+        
+        logging.info(f"Processed {len(live_player_data)} players with custom scores")
+        
         # Save to database (live data table)
         save_result = save_live_data(live_player_data)
-        logging.info(f"Save result: {save_result}")
+        
+        if save_result:
+            logging.info(f"Successfully saved {len(live_player_data)} live player records to database")
+        else:
+            logging.error("Failed to save live player records to database")
+            return None
         
         logging.info("Live game update completed successfully!")
         return live_player_data
